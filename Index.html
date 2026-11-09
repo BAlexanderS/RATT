@@ -1,4 +1,4 @@
-<!-- PART 1 START -->
+<!-- PART 1  START -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,43 +36,43 @@
             -webkit-overflow-scrolling: touch; 
         } 
         .screen.active { display: flex; flex-direction: column; }
-        
+
         .card { background: #3d3431; padding: 10px; margin: 6px 0; border-radius: 6px; border-left: 4px solid #c48c6a; }
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 8px; margin: 6px 0; }
-        
+
         .cage { background: #3d3431; border: 2px solid #544743; border-radius: 6px; height: 105px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; font-size: 13px; position: relative; cursor: pointer; }
         .cage-gender-badge { position: absolute; top: 4px; right: 6px; font-size: 10px; font-weight: bold; padding: 1px 4px; border-radius: 3px; }
-        
+
         button { background: #c48c6a; color: #1f1a18; border: 2px solid #e5b38a; padding: 10px 14px; font-weight: bold; font-size: 13px; border-radius: 6px; cursor: pointer; margin: 4px 2px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
         button:active { background: #e5b38a; transform: translateY(1px); }
         button:disabled { background: #443c3a; color: #7a6e6a; border-color: #544743; cursor: not-allowed; box-shadow: none; transform: none; }
         button.danger { background: #d16666; border-color: #ff9494; color: #1f1a18; }
         button.secondary { background: #544743; border-color: #70625d; color: #f5ebe6; }
-        
+
         select { background: #3d3431; color: #f5ebe6; border: 1px solid #c48c6a; padding: 8px; font-size: 13px; border-radius: 4px; width: 100%; margin: 4px 0; }
         input[type="text"] { background: #2c2523; color: #f5ebe6; border: 1px solid #c48c6a; padding: 10px; border-radius: 4px; width: 100%; font-size: 14px; margin-bottom: 10px; }
-        
+
         /* Fixed Sticky Mobile Navigation Footprint bar */
         #nav { position: fixed; bottom: 0; left: 0; right: 0; background: #1f1a18; display: flex; height: 55px; border-top: 1px solid #4a3e3a; z-index: 99; padding-bottom: env(safe-area-inset-bottom); }
         .tab { flex: 1; text-align: center; line-height: 55px; cursor: pointer; font-weight: bold; opacity: 0.6; font-size: 13px; }
         .tab.on { opacity: 1; color: #c48c6a; font-weight: bold; }
         .badge { background: #1f1a18; padding: 2px 6px; border-radius: 4px; font-size: 11px; color: #c48c6a; font-weight: bold; }
-        
+
         /* Precise Overlay Configurations: Prevents backdrop bleed and pins depth stacking order completely */
         .overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.85); padding: 16px; z-index: 99999 !important; overflow-y: auto; -webkit-overflow-scrolling: touch; }
         .popup { background: #3d3431; padding: 16px; border-radius: 8px; border: 2px solid #c48c6a; max-width: 420px; margin: 20px auto; box-shadow: 0 4px 25px rgba(0,0,0,0.6); }
-        
+
         #time-track { background: #1f1a18; height: 6px; width: 100%; margin-top: 6px; border-radius: 3px; overflow: hidden; }
         #time-fill { background: #6da374; height: 100%; width: 0%; }
         #onboard-banner { background: #71553d; padding: 10px; border-radius: 6px; font-weight: bold; margin: 8px 0; border: 1px dashed #e5b38a; font-size: 12px; }
-        
+
         .profile-header-btn { display: flex; align-items: center; gap: 8px; cursor: pointer; }
         .avatar-frame { background: #c48c6a; color: #1f1a18; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: bold; }
 
         #playground-floor { background: #231d1c; border: 2px dashed #4a3e3a; border-radius: 8px; height: 170px; position: relative; margin-top: 8px; overflow: hidden; width: 100%; flex-shrink: 0; }
         .rat-token { position: absolute; font-size: 22px; cursor: pointer; transition: all 1.8s ease-in-out; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 45px; height: 45px; z-index: 10; }
         .rat-token-label { font-size: 9px; background: rgba(0,0,0,0.7); color: #f5ebe6; padding: 1px 4px; border-radius: 3px; white-space: nowrap; margin-top: -2px; font-weight: bold; }
-        
+
         .castle-graphic { position: absolute; font-size: 60px; bottom: 10px; left: 42%; opacity: 0.9; user-select: none; z-index: 2; }
     </style>
 </head>
@@ -96,16 +96,16 @@
         </div>
         <div id="time-track"><div id="time-fill"></div></div>
     </div>
-    
+
     <div style="flex: 1; position: relative; overflow: hidden;">
         <div id="onboard-banner" style="margin: 10px 12px 2px 12px;">📌 TUTORIAL: Welcome to your Rattery! Open the Rescue App to select your first free founding Doe (Female).</div>
-        
+
         <div id="scr-room" class="screen active">
             <h3>🏡 Rat Room Wall Matrix</h3>
             <div id="cap-ui" style="font-weight:bold; color:#c48c6a; margin-bottom:6px;">Mischief Capacity: 0 / 6 Rats</div>
             <div class="grid" id="cage-wall"><div class="cage">🏠 Mischief Mansion Base Unit</div></div>
             <button onclick="buyMansion()" style="width:100%; padding:12px; font-size:13px; margin-top:6px; margin-bottom:10px;">🛠️ CLICK TO BUY NEW MISCHIEF MANSION UNIT (+6 CAP) | 💰 200 Shil</button>
-            
+
             <div style="display:flex; justify-content:space-between; align-items:center; margin-top:2px;">
                 <h4 style="margin:4px 0;">🐀 Interactive Free-Roam Floor Playground</h4>
                 <button onclick="window.deployCastleDirectFromFloor()" id="floor-castle-quick-btn" style="padding:4px 8px; font-size:11px; margin:0;">🏰 Place Castle</button>
@@ -150,7 +150,7 @@
                 </div>
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px; font-size:11px;" id="store-inventory-dashboard"></div>
             </div>
-            
+
             <h4 style="margin:4px 0;">🛒 Purchase Consumables & Enrichment</h4>
             <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(135px, 1fr)); gap:6px; margin-bottom:10px; max-height:180px; overflow-y:auto; padding:2px;" id="shop-catalog-shelf"></div>
 
@@ -159,10 +159,1606 @@
                 <span id="market-ref-ui" style="font-size:11px; opacity:0.8;">Refreshes left: 3 / 3</span>
             </div>
             <button id="manual-refresh-btn" onclick="manualRefreshMarket()" style="margin-bottom:8px; width:100%; padding:10px;">🔄 Force Manual Refresh (💰 50 Shil)</button>
-            
+
             <!-- FIXED: Removed the 220px constraint clamp to allow all 3 rescue cards to sit fully open without scrolling -->
             <div id="store-list" style="overflow-y:visible; flex:1; width:100%;"></div>
         </div>
     </div>
 <!-- PART 2 SECTION A END -->
+
+<!-- PART 2 SECTION B START -->
+    <!-- 🔒 STARTUP INITIAL SETUP POPUP -->
+    <div id="setup-popup" class="overlay" style="display:block; background:#1f1a18; z-index:200;">
+        <div class="popup" style="margin:60px auto; max-width:360px;">
+            <h3>📝 Fancy Club Certificate</h3>
+            <p style="font-size:12px; opacity:0.8; line-height:1.4;">Register your breeding facility credentials to open up your room setup loops.</p>
+            <label style="font-size:12px; font-weight:bold;">Your Breeder Name:</label><br>
+            <input type="text" id="setup-breeder-input" placeholder="e.g. Jane Doe" style="width:100%; margin-top:6px;"><br>
+            <button onclick="validateAndRegisterRattery()" style="width:100%; margin-top:12px; padding:12px;">Confirm Credentials</button>
+        </div>
+    </div>
+
+    <!-- 🏷️ EXPLICIT RESCUE APP ADOPTION WELCOME POPUP DRAWER OVERLAY -->
+    <div id="rescue-tutorial-popup" class="overlay" style="display:none; z-index:210;" onclick="this.style.display='none'">
+        <div class="popup" onclick="event.stopPropagation()" style="max-width:320px; margin-top:120px;">
+            <h3 style="margin-top:0; color:#c48c6a;">🧑‍🌾 Foundation Onboarding</h3>
+            <p style="font-size:13px; line-height:1.4;">Welcome to your new rattery playground! To establish your foundation stock lines, adopt your first free founding **Doe (Female)** from the rescue listings below.</p>
+            <button onclick="document.getElementById('rescue-tutorial-popup').style.display='none'" style="width:100%;">Got It</button>
+        </div>
+    </div>
+
+    <!-- 🎒 FIXED DEPTH STACK OVERRIDE: Backpack drawer forcibly floats on top of all underlying rat popup sheets -->
+    <div id="global-backpack-popup" class="overlay" style="z-index: 100000 !important;" onclick="window.closeGlobalBackpackModal()">
+        <div class="popup" onclick="event.stopPropagation()" style="max-width:380px; border-color: #6da374;">
+            <h3 style="margin-top:0; color:#6da374;">🎒 Global Stockpile Depot</h3>
+            <p style="font-size:11px; opacity:0.7; margin-top:-6px;">Manage, deploy, or scatter feed directly from your main supply storage.</p>
+            <div id="global-backpack-items-list" style="max-height:280px; overflow-y:auto; padding:2px;"></div>
+            <button class="secondary" style="width:100%; margin-top:12px;" onclick="window.closeGlobalBackpackModal()">Close Backpack</button>
+        </div>
+    </div>
+
+    <!-- 📜 INTERACTIVE MANSION CAGE CONFIGURATION MENU MODAL OVERLAY -->
+    <div id="cage-roster-popup" class="overlay" onclick="closeCageRosterModal()">
+        <div class="popup" onclick="event.stopPropagation()" style="max-width:380px;">
+            <h3 id="cage-popup-title" style="margin-top:0; color:#c48c6a;">🏠 Mansion Configuration</h3>
+            <div style="background:#2c2523; padding:8px; border-radius:4px; font-size:12px; border:1px solid #4a3e3a; margin-bottom:10px;" id="cage-popup-status-text"></div>
+
+            <h4>🎒 Installed Enrichment Slots</h4>
+            <p style="font-size:10px; opacity:0.7; margin-top:-8px; margin-bottom:6px;">Tap an open socket to directly install accessories from your backpack.</p>
+            <div style="display:grid; grid-template-columns:1fr; gap:4px; font-size:12px; margin-bottom:12px;" id="cage-slots-list"></div>
+
+            <h4>📋 Co-Housed Specimen Roster</h4>
+            <div style="max-height:140px; overflow-y:auto; font-size:13px; background:#2c2523; border-radius:4px; padding:6px; border:1px solid #4a3e3a;" id="cage-rats-list"></div>
+            <button class="secondary" style="width:100%; margin-top:12px;" onclick="closeCageRosterModal()">Dismiss Cage Matrix</button>
+        </div>
+    </div>
+
+    <!-- 🎒 ACCESSORY INSTALLER TARGETED DROP DRAWER OVERLAY -->
+    <div id="item-use-popup" class="overlay" onclick="closeItemUseModal()">
+        <div class="popup" onclick="event.stopPropagation()" style="max-width:320px;">
+            <h4 id="item-use-popup-title" style="margin-top:0;">🎒 Select Item / Diet</h4>
+            <div id="item-use-list" style="max-height:220px; overflow-y:auto; margin-bottom:12px;"></div>
+            <button class="secondary" style="width:100%;" onclick="closeItemUseModal()">Cancel</button>
+        </div>
+    </div>
+
+    <!-- 🧬 INDIVIDUAL SPECIMEN CARD OVERLAY -->
+    <div id="card-popup" class="overlay" onclick="closeProfileCard()">
+        <div class="popup" onclick="event.stopPropagation()">
+            <h3 style="margin-top:0; color:#c48c6a;">🧬 Animal Identity Specification</h3>
+            <div id="pop-details" style="background:#2c2523; padding:10px; border-radius:6px; margin-bottom:12px; border:1px solid #4a3e3a; font-size:13px; line-height:1.5;"></div>
+
+            <div style="margin-bottom:12px; display:flex; gap:4px;">
+                <div style="flex:1;">
+                    <label style="font-size:11px; font-weight:bold; display:block; margin-bottom:2px;">Rename Specimen:</label>
+                    <input type="text" id="pop-name-input" style="width:100%; padding:8px; margin-bottom:0; font-size:13px;">
+                </div>
+                <button onclick="saveRatName()" style="margin-top:16px; padding:0 12px; font-size:12px;" class="secondary">Save</button>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-bottom:10px;">
+                <button onclick="openItemUseModalForCurrentRat()" style="margin:0; font-size:12px; padding:10px;">🎒 Apply Diet/Med</button>
+                <button onclick="openCageReassignModalForCurrentRat()" style="margin:0; font-size:12px; padding:10px;" class="secondary">🏠 Reassign Cage</button>
+            </div>
+
+            <button id="pop-retire-btn" class="danger" style="width:100%; padding:11px; margin-bottom:6px; margin-left:0;">Retire / Adopt Out</button>
+            <button class="secondary" style="width:100%; margin-left:0; padding:10px;" onclick="closeProfileCard()">Dismiss Specimen Card</button>
+        </div>
+    </div>
+
+    <!-- 🏠 DYNAMIC HOUSING REASSIGNMENT SELECTOR POPUP OVERLAY -->
+    <div id="cage-move-popup" class="overlay" onclick="document.getElementById('cage-move-popup').style.display='none'">
+        <div class="popup" onclick="event.stopPropagation()" style="max-width:320px;">
+            <h4>🏠 Choose Destination Unit</h4>
+            <div id="cage-move-buttons-box" style="display:flex; flex-direction:column; gap:6px;"></div>
+            <button class="secondary" style="width:100%; margin-top:10px;" onclick="document.getElementById('cage-move-popup').style.display='none'">Cancel</button>
+        </div>
+    </div>
+
+    <!-- 🏆 UNLOCKED BREEDER REGISTRATION CARD OVERLAY -->
+    <div id="breeder-card-popup" class="overlay" onclick="closeBreederRegistrationCard()">
+        <div class="popup" onclick="event.stopPropagation()">
+            <h3 style="margin-top:0; color:#c48c6a;">📜 National Breeder Registration</h3>
+            <div style="background:#2c2523; padding:10px; border-radius:6px; margin-bottom:12px; border:1px solid #4a3e3a;">
+                <div style="font-size:16px; font-weight:bold;" id="card-rattery-name">Claimed Rattery</div>
+                <div style="font-size:12px; opacity:0.8;">Registered Owner: <span id="card-owner-name">Owner</span></div>
+                <div style="font-size:12px; color:#6da374; font-weight:bold; margin-top:4px;">Rank: <span id="card-title-rank">Novice Hobbyist</span> (Lvl <span id="card-level-num">1</span>)</div>
+            </div>
+
+            <h4>🏆 Lifetime Exhibition Cabinet</h4>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; font-size:12px; margin-bottom:12px;">
+                <div style="background:#2c2523; padding:6px; border-radius:4px;">🎟️ Benched: <strong id="card-stat-benched">0</strong></div>
+                <div style="background:#2c2523; padding:6px; border-radius:4px;">👑 BIS: <strong id="card-stat-bis">0</strong></div>
+                <div style="background:#2c2523; padding:6px; border-radius:4px; grid-column: span 2;">🏅 Payouts: <span id="card-stat-rosettes">1st: 0 | 2nd: 0 | 3rd: 0</span></div>
+            </div>
+
+            <h4>🎗️ Display Ribbon Showcase</h4>
+            <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:6px; text-align:center;" id="ribbon-showcase-row">
+                <div class="cage" style="height:60px; font-size:11px;" onclick="clickRibbonSlot(0)" id="ribbon-hook-0">🎗️ Empty</div>
+                <div class="cage" style="height:60px; font-size:11px;" onclick="clickRibbonSlot(1)" id="ribbon-hook-1">🎗️ Empty</div>
+                <div class="cage" style="height:60px; font-size:11px;" onclick="clickRibbonSlot(2)" id="ribbon-hook-2">🎗️ Empty</div>
+            </div>
+            <button class="secondary" style="width:100%; margin-top:14px;" onclick="closeBreederRegistrationCard()">Return to Mischief</button>
+        </div>
+    </div>
+
+    <!-- 🏅 RIBBON SELECTOR DRAWER MODAL OVERLAY -->
+    <div id="ribbon-picker-popup" class="overlay" onclick="closeRibbonPicker()">
+        <div class="popup" onclick="event.stopPropagation()" style="max-width:320px;">
+            <h4>🎗️ Select Ribbon to Pin Up</h4>
+            <div id="ribbon-picker-list" style="max-height:200px; overflow-y:auto; margin-bottom:12px;"></div>
+            <button class="secondary" style="width:100%;" onclick="closeRibbonPicker()">Cancel</button>
+        </div>
+    </div>
+    <div id="nav"><div class="tab on" onclick="tab('room', this)">🏡 Room</div><div class="tab" onclick="tab('breed', this)">🔬 Nursery</div><div class="tab" onclick="tab('show', this)">🏆 Show</div><div class="tab" id="store-tab-btn" onclick="tab('store', this)">🎪 Rescue App</div></div>
+<!-- PART 2 END -->
+
+<!-- PART 3 SECTION A START -->
+    <script>
+
+<!-- PART 10 START -->
+function renderShowDashboard() {
+    let container = document.getElementById("show-dashboard-view");
+    if (!container) return;
+
+    if (activeShowCircuits.length === 0) {
+        generateWeeklyShowCalendar();
+    }
+
+    let html = `<h4>📅 Available Weekly Circuits</h4>`;
+    activeShowCircuits.forEach(show => {
+        html += `<div class="card" style="background:#1f1a18; border-color:#e5b38a; padding:12px;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <strong>${show.title}</strong>
+                <span class="badge" style="color:#6da374;">Fee: 💰 ${show.fee} Shil</span>
+            </div>
+            <p style="font-size:11px; color:#c48c6a; margin:4px 0 2px 0; font-weight:bold;">Requirements: ${show.desc}</p>`;
+
+        if (!show.benchedRat) {
+            html += `<div style="display:flex; gap:6px; margin-top:6px;">
+                <select id="select-for-${show.id}" style="flex:1;"><option value="">Select Candidate</option>`;
+
+            colony.forEach(rat => {
+                let isEligible = checkGeneticEligibility(rat, show.type);
+                if (isEligible) {
+                    html += `<option value="${rat.id}">${rat.name} (${rat.age} Wks)</option>`;
+                }
+            });
+
+            html += `</select>
+                <button onclick="benchAnimalToCircuit('${show.id}')" style="padding:6px 12px; margin:0;">Enter</button>
+            </div>`;
+        } else {
+            html += `<div style="background:#2c2523; padding:8px; border-radius:4px; margin-top:6px; font-size:12px; border:1px solid #4a3e3a;">
+                ⏳ <strong>Benched Rat:</strong> ${show.benchedRat.name}<br>
+                📋 <strong>Opponents Field:</strong> ${show.field.map(f => `${f.name} [${f.rattery}]`).join(", ")}
+            </div>`;
+        }
+        html += `</div>`;
+    });
+
+    html += `<h4>📜 Tournament Circuit Logs</h4>
+    <div style="background:#2c2523; padding:10px; border-radius:6px; font-size:12px; max-height:160px; overflow-y:auto; border:1px solid #4a3e3a;">`;
+    if (benchedHistoryLogs.length === 0) {
+        html += `<span style="opacity:0.5; font-style:italic;">No records benched this timeline...</span>`;
+    } else {
+        benchedHistoryLogs.forEach(log => { html += `<div style="border-bottom:1px dashed #4a3e3a; padding:4px 0;">${log}</div>`; });
+    }
+    html += `</div>`;
+
+    container.innerHTML = html;
+}
+
+window.benchAnimalToCircuit = function(showId) {
+    // Clean prompt stream: preserves existing breeder name, requests rattery brand registration only once
+    if (!ratteryRegistered) {
+        let rInput = prompt("Enter your Official Rattery Name to secure circuit credentials:");
+        if (!rInput || !rInput.trim()) return alert("Registration is required to access circuit fields.");
+
+        ratteryName = rInput.trim();
+        ratteryRegistered = true;
+        saveGame();
+    }
+
+    let show = activeShowCircuits.find(s => s.id === showId);
+    let selector = document.getElementById(`select-for-${showId}`);
+    if (!show || !selector || !selector.value) return alert("Please select a candidate!");
+    if (shillings < show.fee) return alert("Insufficient Shillings!");
+
+    let ratId = parseInt(selector.value);
+    let rat = colony.find(r => r.id === ratId);
+    if (!rat) return;
+
+    shillings -= show.fee;
+    rat.inShowCircuit = true;
+    show.benchedRat = rat;
+
+    let tempField = new Array();
+    tempField.push({ name: "Squeakers", rattery: "Apex Lines", score: Math.floor(Math.random() * 20) + 70 });
+    tempField.push({ name: "Whiskers", rattery: "Fancy Tails", score: Math.floor(Math.random() * 20) + 72 });
+    tempField.push({ name: "Nibbles", rattery: "Mischief Co.", score: Math.floor(Math.random() * 20) + 68 });
+    tempField.push({ name: "Shadow", rattery: "Titan Rodents", score: Math.floor(Math.random() * 20) + 75 });
+    show.field = tempField;
+
+    refreshUI();
+}
+<!-- PART 10 END -->
+
+<!-- PART 3 START -->
+        // ============================================================================
+        // 🏆 HIGH-SEQUENCE CIRCUIT TRACKING & CALENDAR SCHEDULER (INJECTED)
+        // ============================================================================
+        let activeShowCircuits = new Array();
+        let benchedHistoryLogs = new Array();
+
+        let hardClassPool = new Array(
+            { type: "dwarf", label: "Dwarf Class Only", desc: "Requires homozygous dwarf size alleles (dw/dw)." },
+            { type: "rex", label: "Rex Coat Open Exhibition", desc: "Requires active Rex or Double Rex coat genotypes." },
+            { type: "harley", label: "Harley Silhouette Showcase", desc: "Requires homozygous Harley long-coat alleles (hl/hl)." },
+            { type: "silvermane", label: "Silvermane Presentation Tier", desc: "Requires heterozygous Silvermane coat alleles (Sm/sm)." }
+        );
+
+        function generateWeeklyShowCalendar() {
+            let freshCalendar = new Array();
+            freshCalendar.push({ id: "show_open", title: "Fancy Club Open Class", fee: 15, stipend: 30, type: "open", desc: "Open Class Event. Any mature animal 12+ weeks old is eligible to enter.", benchedRat: null, field: new Array() });
+            freshCalendar.push({ id: "show_self", title: "National Self Variety Class", fee: 25, stipend: 45, type: "self", desc: "Requires solid/self non-agouti base color alleles (a/a).", benchedRat: null, field: new Array() });
+            freshCalendar.push({ id: "show_ticked", title: "National Ticked Variety Class", fee: 25, stipend: 45, type: "ticked", desc: "Requires ticked agouti base color alleles (A/A or A/a).", benchedRat: null, field: new Array() });
+
+            let rolledPool1 = hardClassPool[Math.floor(Math.random() * hardClassPool.length)];
+            let rolledPool2 = hardClassPool[(Math.floor(Math.random() * (hardClassPool.length - 1)) + 1) % hardClassPool.length];
+
+            freshCalendar.push({ id: "show_hard_1", title: "Grand Circuit: " + rolledPool1.label, fee: 40, stipend: 75, type: rolledPool1.type, desc: rolledPool1.desc, benchedRat: null, field: new Array() });
+            freshCalendar.push({ id: "show_hard_2", title: "Grand Circuit: " + rolledPool2.label, fee: 40, stipend: 75, type: rolledPool2.type, desc: rolledPool2.desc, benchedRat: null, field: new Array() });
+
+            let today = new Date();
+            if (today.getMonth() === 10) { // November Thanksgiving target window hook
+                freshCalendar.push({ id: "show_seasonal", title: "🍂 Thanksgiving Harvest Festival Event", fee: 20, stipend: 60, type: "seasonal", desc: "Special Seasonal Event. Celebrate the harvest! Any standard, rex, or dwarf animal can enter.", benchedRat: null, field: new Array() });
+            }
+
+            if (activeShowCircuits && activeShowCircuits.length > 0) {
+                activeShowCircuits.forEach(oldShow => {
+                    if (oldShow.benchedRat) {
+                        let matchingSlot = freshCalendar.find(f => f.id === oldShow.id);
+                        if (matchingSlot) { matchingSlot.benchedRat = oldShow.benchedRat; matchingSlot.field = oldShow.field; }
+                    }
+                });
+            }
+            activeShowCircuits = freshCalendar;
+        }
+
+        function checkGeneticEligibility(rat, type) {
+            if (!rat || rat.age < 12 || rat.breeding || rat.inShowCircuit) return false;
+            if (type === "open" || type === "seasonal") return true;
+            if (type === "self") return rat.color && rat.color.includes("a") && !rat.color.includes("A");
+            if (type === "ticked") return rat.color && rat.color.includes("A");
+            if (type === "dwarf") return rat.size_dw && rat.size_dw.filter(x => x === 'dw').length === 2;
+            if (type === "rex") return rat.coat && rat.coat.includes("Rex");
+            if (type === "harley") return rat.harley && rat.harley.filter(x => x === 'hl').length === 2;
+            if (type === "silvermane") return rat.silvermane && rat.silvermane.includes("Sm") && rat.silvermane.includes("sm");
+            return false;
+        }
+
+        // ============================================================================
+        // CORE GLOBAL RATTERY VARIABLES
+        // ============================================================================
+        let shillings = 500, reputation = 0, treats = 0, maxCapacity = 6;
+        let clockTicks = 0, matCapacity = 2, marketWeeksLeft = 12, manualRefreshesThisPeriod = 3;
+        let onboardStage = 1; let currentViewingRatId = null; let currentViewingCageId = null;
+
+        let colony = new Array(); 
+        let pregnancies = new Array(); 
+        let weaningRack = new Array();
+
+        // Complex 5-Slot Open Customization Mansion Collection Array
+        let cages = new Array(
+            { id: 1, name: "Mischief Mansion Base Unit", genderRule: "Open", slots: new Array(null,null,null,null,null), slotDurability: new Array(0,0,0,0,0) }
+        );
+<!-- PART 3 BLOCK 1 END -->
+
+<!-- PART 3 BLOCK 2 START -->
+        // Global Stock Stockpile Array Collection
+        let inventory = {
+            ratFoodBlocks: 1000, shunamiteMix: 0, dnaSwabKits: 0, bugRevoltMeds: 0,
+            hangingChews: 0, fleeceHammocks: 0, spacePods: 0, silentWheels: 0, cardboardCastles: 0,
+            roomFloorItem: null, roomFloorDurability: 0
+        };
+
+        let breederName = "Unregistered", ratteryName = "Unregistered";
+        let ratteryRegistered = false;
+        let lifetimeBenched = 0, lifetimeBIS = 0;
+        let lifetimeFirst = 0, lifetimeSecond = 0, lifetimeThird = 0;
+        let wonRibbonsInventory = new Array(); 
+        let activeShowcaseRibbons = [null, null, null], currentSelectedHookIndex = null;
+
+        function cross(s, d) { return [s[Math.floor(Math.random()*2)], d[Math.floor(Math.random()*2)]]; }
+        function blend(s, d) { return Math.max(0, Math.min(100, Math.floor((s + d) / 2) + (Math.floor(Math.random()*7)-3))); }
+
+        function decode(color, d_b, rb_b, ch, mk, pd, rd, c_loc, coat, burmese, be, sm, hl, br, downunder, marking_h, hs, size_dw, headspot_style, ears) {
+            let c_code = [...c_loc].sort().join("");
+            let has_be = (be.includes('Be') && c_code !== "CC");
+            let base = "Black";
+            let is_agouti = color.includes('A');
+            let is_blue = (d_b.filter(x=>x==='d').length===2);
+            let is_rb = (rb_b.filter(x=>x==='rb').length===2);
+            let is_mink = (mk.filter(x=>x==='m').length===2);
+            let is_choc = (ch.filter(x=>x==='b').length===2);
+            let is_ped = (pd.filter(x=>x==='p').length===2);
+            let is_red = (rd.filter(x=>x==='r').length===2);
+
+            if (is_blue && is_rb) base = "Russian Silver";
+            else if (is_mink && is_blue) base = "Platinum";
+            else if (is_mink && is_ped) base = "Dove";
+            else if (is_mink && is_choc) base = "Burnt Mink";
+            else if (is_blue) base = "Blue";
+            else if (is_rb) base = "Russian Blue";
+            else if (is_mink) base = is_agouti ? "Cinnamon" : "Mink";
+            else if (is_choc) base = "Chocolate";
+            else if (is_ped) base = is_agouti ? "Amber" : "Champagne";
+            else if (is_red) base = is_agouti ? "Fawn" : "Beige";
+            else if (is_agouti) base = "Agouti";
+
+            if (is_agouti && base !== "Agouti" && base !== "Cinnamon" && base !== "Amber" && base !== "Fawn" && base !== "Russian Silver" && base !== "Platinum" && base !== "Dove" && base !== "Burnt Mink") {
+                base = base + " Agouti";
+            }
+
+            let c_mod = "";
+            let buCount = burmese.filter(x => x === "Bu").length;
+            if (c_code === "c^hc^h") {
+                c_mod = "Siamese";
+                if (buCount === 2) c_mod = "Sable";
+                else if (buCount === 1) c_mod = "Burmese";
+                if (has_be) c_mod = "Black Eyed " + c_mod;
+            } else if (c_code === "cc^h") {
+                c_mod = has_be ? "Black Eyed Himalayan" : "Himalayan";
+                if (buCount === 1) c_mod = "Himalayan Burmese";
+            } else if (c_code === "c^mc^m") {
+                c_mod = has_be ? "Black Eyed Marten" : "Marten";
+                if (buCount === 1) c_mod = "Marten Burmese";
+                base = is_agouti ? "Agouti Marten" : "Black Marten";
+            } else if (c_code === "c^tc^t") {
+                c_mod = buCount === 2 ? "Sable Tonkinese" : "Tonkinese";
+            }
+
+            let finalColor = c_mod ? c_mod : base;
+            if (c_code === "cc" && has_be) finalColor = "Black Eyed White";
+            else if (c_code === "cc") finalColor = "Albino";
+
+            let h_code = [...marking_h].sort().join("");
+            let pattern = "";
+            let is_du_spotted = (downunder && downunder.includes("Hdu"));
+
+            if (h_code === "hh") { pattern = is_du_spotted ? "Downunder Hooded" : "Hooded"; } 
+            else if (h_code === "h^ih^i" || h_code === "h^ih") { pattern = "Irish"; } 
+            else if (h_code === "Hh") { pattern = is_du_spotted ? "Downunder Berkshire" : "Berkshire"; } 
+            else if (is_du_spotted) { pattern = "Downunder"; }
+
+            if (hs.filter(x => x === 'hs').length === 2 && c_code !== "cc") {
+                let facialText = (headspot_style === "blazed") ? "Blazed" : "Headspot";
+                pattern = pattern ? facialText + " " + pattern : facialText;
+            }
+            if (pattern && c_code !== "cc") finalColor = finalColor + " " + pattern;
+
+            let traits = new Array();
+            if (coat === "Hairless") traits.push("Hairless");
+            else {
+                if (coat === "Double Rex") traits.push("Double Rex");
+                else if (coat === "Rex") traits.push("Rex");
+                if (coat === "Double Velveteen") traits.push("Double Velveteen");
+                else if (coat === "Velveteen") traits.push("Velveteen");
+                if (coat === "Satin") traits.push("Satin");
+            }
+
+            let brCount = br.filter(x=>x==='Br').length;
+            if (brCount === 2) traits.push("Double Bristlecoat");
+            else if (brCount === 1) traits.push("Bristlecoat");
+
+            if (sm.includes('Sm') && sm.includes('sm')) traits.push("Silvermane");
+            if (hl.filter(x => x === 'hl').length === 2) traits.push("Harley");
+            if (ears && ears.filter(x=>x==='du').length === 2) traits.push("Dumbo");
+
+            let coatType = traits.length > 0 ? traits.join(" ") : "Standard";
+            let sizePrefix = (size_dw.filter(x=>x==='dw').length === 2) ? "Dwarf " : "";
+
+            return sizePrefix + finalColor + " (" + coatType + ")";
+        }
+<!-- PART 3 END -->
+
+
+<!-- PART 4 START -->
+        function getDynamicPlayerTitleInfo() {
+            let lvl = Math.floor(Math.sqrt(reputation / 100)) + 1;
+            let title = "Novice Hobbyist";
+            if (lvl >= 6) title = "Registered Exhibitor";
+            if (lvl >= 11) title = "Sanctioned Breeder";
+            if (lvl >= 16) title = "Master Exhibitor";
+            if (lvl >= 21) title = "Grand Master Breeder";
+            return { level: lvl, title: title };
+        }
+
+        function getDynamicAdoptionFee() {
+            let pInfo = getDynamicPlayerTitleInfo();
+            if (pInfo.level < 5) {
+                return Math.min(45, 20 + Math.floor(reputation / 20));
+            } else if (pInfo.level < 10) {
+                return Math.min(65, 45 + Math.floor((reputation - 500) / 50));
+            } else if (pInfo.level < 15) {
+                return Math.min(85, 65 + Math.floor((reputation - 1500) / 125));
+            } else {
+                return Math.min(130, 85 + Math.floor((reputation - 4000) / 300));
+            }
+        }
+
+        function refreshUI() {
+            let pInfo = getDynamicPlayerTitleInfo();
+
+            document.getElementById("header-breeder-name").innerText = breederName;
+            document.getElementById("header-level-badge").innerText = "Lvl " + pInfo.level;
+            document.getElementById("header-rattery-title").innerText = ratteryRegistered ? ratteryName + " (" + pInfo.title + ")" : "Unregistered Hobbyist";
+            document.getElementById("header-avatar").innerText = pInfo.level >= 16 ? "👑" : (pInfo.level >= 6 ? "🎖️" : "🧑‍🌾");
+
+            document.getElementById("shil-ui").innerText = "💰 " + shillings + " Shil";
+            document.getElementById("rep-ui").innerText = "💖 " + reputation + " Rep";
+            document.getElementById("treat-ui").innerText = "🥜 " + treats + " Nuts";
+            document.getElementById("cap-ui").innerText = "Mischief Capacity: " + colony.length + " / " + (cages.length * 6) + " Rats";
+            document.getElementById("mat-cap-ui").innerText = "Maternity Racks: " + pregnancies.length + " / " + matCapacity + " Active";
+            document.getElementById("market-timer-ui").innerText = "🔄 Auto-Restock in: " + marketWeeksLeft + " Wks";
+            document.getElementById("market-ref-ui").innerText = "Refreshes left: " + manualRefreshesThisPeriod + " / 3";
+            document.getElementById("store-food-buffer-ui").innerText = "Blocks Buffer: " + inventory.ratFoodBlocks + "g";
+
+            let bMatenB = document.getElementById("sel-damB"), bMatenC = document.getElementById("sel-damC");
+            if (reputation >= 1000 && bMatenB) bMatenB.disabled = false;
+            if (reputation >= 4000 && bMatenC) bMatenC.disabled = false;
+
+            let bSel = document.getElementById("sel-sire"), dSel = document.getElementById("sel-damA");
+            let previousSire = bSel.value, previousDamA = dSel.value;
+            let previousDamB = (bMatenB && !bMatenB.disabled) ? bMatenB.value : "";
+            let previousDamC = (bMatenC && !bMatenC.disabled) ? bMatenC.value : "";
+
+            bSel.innerHTML = "<option value=''>Choose Buck</option>"; dSel.innerHTML = "<option value=''>Choose Doe</option>";
+
+            colony.forEach(r => {
+                let avail = (r.age >= 12 && !r.breeding && !r.inShowCircuit);
+                let vName = decode(r.color, r.d_blue, r.rb_blue, r.choc, r.mink, r.p_dilute, r.r_dilute, r.c, r.coat, r.burmese, r.be, r.silvermane, r.harley, r.bristle, r.downunder, r.marking_h, r.headspot, r.size_dw, r.headspot_style, r.ears);
+                let opt = "<option value='" + r.id + "'" + (avail ? "" : " disabled") + ">" + r.name + " [" + vName + "] (" + r.age + " Wk)" + (r.breeding ? " [BREEDING]" : (r.inShowCircuit ? " [SHOWING]" : (r.age < 12 ? " [JUVENILE]" : ""))) + "</option>";
+                if(r.sex === "Buck ♂") bSel.innerHTML += opt; else dSel.innerHTML += opt;
+            });
+
+            bSel.value = previousSire; dSel.value = previousDamA; filterDams();
+            if(bMatenB && !bMatenB.disabled && previousDamB) bMatenB.value = previousDamB;
+            if(bMatenC && !bMatenC.disabled && previousDamC) bMatenC.value = previousDamC;
+            filterDams();
+
+            // 🏠 1. RENDER INTERACTIVE CAGE WALL MATRIX PANELS
+            let wallBox = document.getElementById("cage-wall");
+            if (wallBox) {
+                wallBox.innerHTML = "";
+                cages.forEach(c => {
+                    let cDiv = document.createElement("div");
+                    cDiv.className = "cage";
+                    let count = colony.filter(r => r.cageHome === c.id).length;
+
+                    let badgeColor = c.genderRule === "Male Only" ? "#4a76a8" : (c.genderRule === "Female Only" ? "#b85c86" : "#544743");
+                    let badgeText = c.genderRule === "Male Only" ? "♂ Bucks" : (c.genderRule === "Female Only" ? "♀ Does" : "Open");
+
+                    cDiv.innerHTML = `<span class="cage-gender-badge" style="background:${badgeColor};">${badgeText}</span>
+                                      <strong>🏠 M. Mansion #${c.id}</strong><br>
+                                      <small style="opacity:0.8; font-size:11px;">Rats: ${count} / 6</small>`;
+                    cDiv.onclick = function() { openCageRosterModal(c.id); };
+                    wallBox.appendChild(cDiv);
+                });
+            }
+<!-- PART 4 SECTION A END -->
+
+<!-- PART 4 SECTION B START -->
+            // 🐀 2. RENDER THE DRIFTING ANIMATED VISUAL FLR PLAYGROUND RENDER LAYER
+            let playground = document.getElementById("playground-floor");
+            if (playground) {
+                let existingTokens = playground.querySelectorAll(".rat-token");
+                let activeRats = colony.filter(r => !r.breeding && !r.inShowCircuit);
+
+                existingTokens.forEach(token => {
+                    let rId = parseInt(token.getAttribute("data-rat-id"));
+                    if (!activeRats.some(r => r.id === rId)) token.remove();
+                });
+
+                let currentRenderedCount = playground.querySelectorAll(".rat-token").length;
+                activeRats.forEach(rat => {
+                    let existingToken = playground.querySelector(`.rat-token[data-rat-id="${rat.id}"]`);
+                    if (!existingToken && currentRenderedCount < 12) {
+                        let token = document.createElement("div");
+                        token.className = "rat-token";
+                        token.setAttribute("data-rat-id", rat.id);
+                        token.innerHTML = `🐀<span class="rat-token-label">${rat.name}</span>`;
+
+                        token.style.left = Math.floor(Math.random() * 75 + 5) + "%";
+                        token.style.top = Math.floor(Math.random() * 65 + 10) + "%";
+                        token.onclick = function(e) { e.stopPropagation(); openProfileCard(rat); };
+                        playground.appendChild(token);
+                        currentRenderedCount++;
+                    } else if (existingToken) {
+                        existingToken.querySelector(".rat-token-label").innerText = rat.name;
+                    }
+                });
+
+                // 📦 DYNAMIC CARBOARD BOX GRAPHIC MAP INJECTION GATE
+                let castleGraphic = playground.querySelector(".castle-graphic");
+                if (inventory.roomFloorItem) {
+                    if (!castleGraphic) {
+                        castleGraphic = document.createElement("div");
+                        castleGraphic.className = "castle-graphic";
+                        castleGraphic.innerText = "📦";
+                        playground.appendChild(castleGraphic);
+                    }
+                } else {
+                    if (castleGraphic) castleGraphic.remove();
+                }
+            }
+
+            // 🍂 3. RENDER FREE-ROAM GENERAL FLOOR ENRICHMENT AREA
+            let floorEnrichBox = document.getElementById("room-floor-enrichment-box");
+            if (floorEnrichBox) {
+                if (inventory.roomFloorItem) {
+                    floorEnrichBox.innerHTML = `<div class="card" style="border-color:#6da374; background:#1f1a18; font-size:12px;">
+                        🏰 <strong>Active Free-Roam Area Item:</strong> ${inventory.roomFloorItem}<br>
+                        ⚙️ <strong>Structural Lifespan Integrity:</strong> ${inventory.roomFloorDurability} Durability points remaining
+                    </div>`;
+                    let quickFloorBtn = document.getElementById("floor-castle-quick-btn");
+                    if (quickFloorBtn) quickFloorBtn.disabled = true;
+                } else {
+                    floorEnrichBox.innerHTML = `<div class="card" style="border-color:#4a3e3a; opacity:0.6; font-size:12px; font-style:italic;">
+                        🏰 No active playgrounds on the floor... Deploy a Cardboard Castle from your backpack via the top icon or quick button!
+                    </div>`;
+                    let quickFloorBtn = document.getElementById("floor-castle-quick-btn");
+                    if (quickFloorBtn) quickFloorBtn.disabled = false;
+                }
+            }
+
+            // 🛒 4. RENDER STOCK DEPOT BACKPACK & ACTIVE CONVERT CATALOG DASHBOARDS
+            if (typeof renderStoreDepotInterfaces === "function") {
+                renderStoreDepotInterfaces();
+            }
+
+            let pList = document.getElementById("preg-list"); pList.innerHTML = pregnancies.length === 0 ? "<em>No active pregnancies...</em>" : "";
+            pregnancies.forEach((p, i) => {
+                if (p.stage < 3) {
+                    pList.innerHTML += "<div class='card'>🤰 <strong>Maternity Cage #" + (i+1) + " [" + p.type + "]</strong><br>Incubation: " + p.stage + " / 3 Weeks</div>";
+                } else if (p.stage >= 3 && p.stage < 4) {
+                    let pupText = p.litter.map(pup => "• " + decode(pup.color,pup.d_blue,pup.rb_blue,pup.choc,pup.mink,pup.p_dilute,pup.r_dilute,pup.c,pup.coat,pup.burmese,pup.be,pup.silvermane,pup.harley,pup.bristle,pup.downunder,pup.marking_h,pup.headspot,pup.size_dw,pup.headspot_style,pup.ears)).join("<br>");
+                    pList.innerHTML += "<div class='card' style='border-color:var(--success-color);'>🎨 <strong>Maternity Cage #" + (i+1) + " (Maternal Bloom)</strong><br><small>" + pupText + "</small></div>";
+                } else {
+                    pList.innerHTML += "<div class='card' style='border-color:var(--success-color);'>🎨 <strong>Maternity Cage #" + (i+1) + " (Weaning Age reached!)</strong><br><button onclick='weanLitter(" + i + ")'>Transfer Litter to Rack</button></div>";
+                }
+            });
+
+            let rList = document.getElementById("rack-list"); rList.innerHTML = weaningRack.length === 0 ? "<em>Weaning rack empty...</em>" : "";
+            weaningRack.forEach((p, i) => {
+                let cashAmt = getDynamicAdoptionFee();
+                let accidentWarn = p.age >= 6 ? "<span style='color:var(--alert-color); font-weight:bold;'> ⚠️ Accidental Litter Risk!</span>" : "";
+                rList.innerHTML += "<div class='card'><strong>" + p.name + " (" + p.sex + ")</strong> - <span class='badge'>" + p.age + " Wks</span>" + accidentWarn + "<br>Variety: " + decode(p.color, p.d_blue, p.rb_blue, p.choc, p.mink, p.p_dilute, p.r_dilute, p.c, p.coat, p.burmese, p.be, p.silvermane, p.harley, p.bristle, p.downunder, p.marking_h, p.headspot, p.size_dw, p.headspot_style, p.ears) + "<br><button onclick='graduate(" + i + ")'>🏡 Graduate</button><button class='danger' onclick='adopt(" + i + ")'>💖 Adopt Out (+💰 " + cashAmt + ")</button></div>";
+            });
+
+            if (typeof renderShowDashboard === "function") {
+                renderShowDashboard();
+            }
+        }
+
+        window.filterDams = function() {
+            let sSel = document.getElementById("sel-sire"), dSelA = document.getElementById("sel-damA"), dSelB = document.getElementById("sel-damB"), dSelC = document.getElementById("sel-damC");
+            let valSire = sSel ? sSel.value : "", valA = dSelA ? dSelA.value : "", valB = (dSelB && !dSelB.disabled) ? dSelB.value : "", valC = (dSelC && !dSelC.disabled) ? dSelC.value : "";
+            let usedIds = [valSire, valA, valB, valC].filter(x => x !== "");
+
+            let updateSelectOptions = function(selectEl, currentVal, isHarem) {
+                if (!selectEl) return;
+                let html = isHarem ? "<option value=''>None (Optional Harem)</option>" : "<option value=''>Choose Doe</option>";
+                colony.forEach(r => {
+                    if (r.sex === "Doe ♀") {
+                        let isThisSelected = (r.id.toString() === currentVal);
+                        let isUsedElsewhere = (usedIds.includes(r.id.toString()) && !isThisSelected);
+                        let avail = (r.age >= 12 && !r.breeding && !r.inShowCircuit && !isUsedElsewhere);
+                        let vName = decode(r.color, r.d_blue, r.rb_blue, r.choc, r.mink, r.p_dilute, r.r_dilute, r.c, r.coat, r.burmese, r.be, r.silvermane, r.harley, r.bristle, r.downunder, r.marking_h, r.headspot, r.size_dw, r.headspot_style, r.ears);
+                        html += "<option value='" + r.id + "'" + (avail ? "" : " disabled") + ">" + r.name + " [" + vName + "] (" + r.age + " Wk)</option>";
+                    }
+                });
+                selectEl.innerHTML = html; selectEl.value = currentVal;
+            };
+            if(dSelA) updateSelectOptions(dSelA, valA, false);
+            if(dSelB && !dSelB.disabled) updateSelectOptions(dSelB, valB, true);
+            if(dSelC && !dSelC.disabled) updateSelectOptions(dSelC, valC, true);
+        }
+<!-- PART 4 END -->
+
+<!-- PART 5 START -->
+setInterval(function() {
+    clockTicks += 1; document.getElementById("time-fill").style.width = ((clockTicks / 400) * 100) + "%";
+    if (clockTicks >= 400) {
+        clockTicks = 0; 
+        colony.forEach(r => { r.age += 1; }); 
+        weaningRack.forEach(r => { r.age += 1; }); 
+        pregnancies.forEach(p => { p.stage += 1; });
+
+        // 🌾 Passive Automated Food Block Buffer Consumption Loop
+        let globalFoodDrain = colony.length * 10; 
+        inventory.ratFoodBlocks = Math.max(0, inventory.ratFoodBlocks - globalFoodDrain);
+
+        // Degradation Lifespan Tick for Installed Mansion Toys & Room Playgrounds
+        cages.forEach(c => {
+            for(let s=0; s<5; s++) {
+                if (c.slots[s] && c.slots[s] !== "Silent Running Wheel") {
+                    c.slotDurability[s] = Math.max(0, c.slotDurability[s] - 1);
+                    if (c.slotDurability[s] <= 0) { c.slots[s] = null; }
+                }
+            }
+        });
+        if (inventory.roomFloorItem) {
+            inventory.roomFloorDurability = Math.max(0, inventory.roomFloorDurability - 2);
+            if (inventory.roomFloorDurability <= 0) { inventory.roomFloorItem = null; }
+        }
+
+        // Secure Auto-Weaning: Forcefully moves them to the rack only when they hit 5 weeks old
+        for(let i = pregnancies.length - 1; i >= 0; i--) { 
+            if (pregnancies[i].stage >= 5) { 
+                weanLitter(i); 
+            } 
+        }
+
+        // Exact Week-Shift Circuit Resolution: Triggers judging right at the zero-out boundary frame
+        if (typeof resolveBenchedShowsTimeline === "function") { resolveBenchedShowsTimeline(); }
+
+        if (weaningRack.length > 1) {
+            let eligibleMales = weaningRack.filter(p => p.sex === "Buck ♂" && p.age >= 6);
+            let eligibleFemales = weaningRack.filter(p => p.sex === "Doe ♀" && p.age >= 6);
+            if (eligibleMales.length > 0 && eligibleFemales.length > 0 && pregnancies.length < matCapacity && Math.random() < 0.20) {
+                let sire = eligibleMales[Math.floor(Math.random()*eligibleMales.length)];
+                let dam = eligibleFemales[Math.floor(Math.random()*eligibleFemales.length)];
+                weaningRack = weaningRack.filter(x => x.id !== sire.id && x.name !== sire.name);
+                weaningRack = weaningRack.filter(x => x.id !== dam.id && x.name !== dam.name);
+
+                sire.age = Math.max(12, sire.age); dam.age = Math.max(12, dam.age); 
+                sire.breeding = true; dam.breeding = true;
+                sire.id = colony.length + 1; colony.push(sire);
+                dam.id = colony.length + 1; colony.push(dam); 
+
+                let arr = new Array();
+                let count = Math.floor(Math.random()*4)+3;
+                for(let i=1; i<=count; i++) {
+                    let rolledSm = cross(sire.silvermane, dam.silvermane);
+                    if (rolledSm.filter(x => x === "Sm").length === 2) continue;
+
+                    arr.push({ id: Math.floor(Math.random()*100000), name: "Accident #" + Math.floor(Math.random()*900+100), sex: Math.random() < 0.5 ? "Buck ♂" : "Doe ♀", age: 3, color: cross(sire.color, dam.color), d_blue: cross(sire.d_blue, dam.d_blue), rb_blue: cross(sire.rb_blue, dam.rb_blue), choc: cross(sire.choc, dam.choc), mink: cross(sire.mink, dam.mink), p_dilute: cross(sire.p_dilute, dam.p_dilute), r_dilute: cross(sire.r_dilute, dam.r_dilute), c: cross(sire.c, dam.c), coat: sire.coat === dam.coat ? sire.coat : "Standard", burmese: cross(sire.burmese, dam.burmese), be: cross(sire.be, dam.be), silvermane: rolledSm, harley: cross(sire.harley, dam.harley), bristle: cross(sire.bristle, dam.bristle), downunder: cross(sire.downunder, dam.downunder), marking_h: cross(sire.marking_h, dam.marking_h), headspot: cross(sire.headspot, dam.headspot), size_dw: cross(sire.size_dw, dam.size_dw), headspot_style: Math.random() < 0.5 ? "headspot" : "blazed", color_qm: blend(sire.color_qm, dam.color_qm), coat_qm: blend(sire.coat_qm, dam.coat_qm), behavior_qm: blend(sire.behavior_qm, dam.behavior_qm) });
+                }
+                pregnancies.push({ stage: 1, type: "⚠️ ACCIDENTAL LITTER", sire: sire, dam: dam, damB: null, damC: null, litter: arr });
+                alert("⚠️ Management Notice! Grow out rack animals left past 6 weeks have accidentally bred!");
+            }
+        }
+        marketWeeksLeft -= 1; if (marketWeeksLeft <= 0) { marketWeeksLeft = 12; manualRefreshesThisPeriod = 3; triggerServerMarketGeneration(); }
+
+        // Drift free-roaming playground token positions randomly every week tick to simulate exploration
+        let tokens = document.querySelectorAll(".rat-token");
+        tokens.forEach(tok => {
+            tok.style.left = Math.floor(Math.random() * 75 + 5) + "%";
+            tok.style.top = Math.floor(Math.random() * 65 + 10) + "%";
+        });
+
+        if (typeof generateWeeklyShowCalendar === "function") { generateWeeklyShowCalendar(); }
+        refreshUI();
+    }
+}, 100);
+
+window.lockInPairing = function() {
+    if (pregnancies.length >= matCapacity) return alert("Nursery full!");
+    let sSelectElement = document.getElementById("sel-sire"), dSelectElementA = document.getElementById("sel-damA"), dSelectElementB = document.getElementById("sel-damB"), dSelectElementC = document.getElementById("sel-damC");
+    let sId = sSelectElement ? parseInt(sSelectElement.value) : 0, dAId = dSelectElementA ? parseInt(dSelectElementA.value) : 0, dBId = (dSelectElementB && !dSelectElementB.disabled) ? parseInt(dSelectElementB.value) : 0, dCId = (dSelectElementC && !dSelectElementC.disabled) ? parseInt(dSelectElementC.value) : 0;
+    if(!sId || !dAId) return alert("Select Buck and Doe A!");
+
+    let sire = colony.find(r => r.id === sId), damA = colony.find(r => r.id === dAId);
+
+    // Age & Fertility Health Defenses: Checks natural genetic degradation profiles
+    let doeMaxAgeLimit = 60;
+    let doeFertilityScore = Math.floor((damA.color_qm + damA.coat_qm) / 2);
+    if (doeFertilityScore >= 80) doeMaxAgeLimit = 70;
+    else if (doeFertilityScore < 45) doeMaxAgeLimit = 52;
+
+    if (damA.age >= doeMaxAgeLimit) {
+        return alert("🔒 Breeding Denied: This Doe has reached her age limit. Further breeding carries severe health risks.");
+    }
+
+    sire.breeding = true; damA.breeding = true; let typeLabel = "Standard Pair", loopCount = 1, damsList = [damA];
+    if (dBId && reputation >= 1000) { let damB = colony.find(r => r.id === dBId); if(damB.age < 60) { damB.breeding = true; typeLabel = "Trio Colony"; loopCount = 2; damsList.push(damB); } }
+    if (dCId && reputation >= 4000) { let damC = colony.find(r => r.id === dCId); if(damC.age < 60) { damC.breeding = true; typeLabel = "Quad Harem"; loopCount = 3; damsList.push(damC); } }
+
+    let arr = new Array();
+    for(let d=0; d<loopCount; d++) {
+        let baseCountRoll = Math.floor(Math.random()*4)+3; 
+        if (sire.age >= 78) { baseCountRoll = Math.max(1, Math.floor(baseCountRoll * (1.0 - (sire.age - 78) / 100))); }
+        if (damsList[d].age >= 45) { baseCountRoll = Math.max(1, Math.floor(baseCountRoll * 0.6)); }
+
+        // Senior Buck Sperm Count Conception Check
+        if (sire.age >= 104 && Math.random() < 0.35) {
+            console.log("Conception run failed due to senior Buck motility decay factors.");
+            continue; 
+        }
+<!-- PART 5 SECTION A END -->
+
+<!-- PART 5 SECTION B START -->
+        for(let i=1; i<=baseCountRoll; i++) {
+            let rolledSm = cross(sire.silvermane, damsList[d].silvermane);
+            if (rolledSm.filter(x => x === "Sm").length === 2) continue; // Lethal Silvermane Absorption
+
+            let rolledDu = cross(sire.downunder, damsList[d].downunder);
+            if (rolledDu.filter(x => x === "Hdu").length === 2) continue; // Lethal Downunder Absorption
+
+            let sireRexAlleles = (sire.coat === "Double Rex") ? ["Rex", "Rex"] : (sire.coat === "Rex" ? ["Rex", "re"] : ["re", "re"]);
+            let damRexAlleles = (damsList[d].coat === "Double Rex") ? ["Rex", "Rex"] : (damsList[d].coat === "Rex" ? ["Rex", "re"] : ["re", "re"]);
+            let childRexRoll = cross(sireRexAlleles, damRexAlleles);
+            let parsedCoat = "Standard";
+            let activeRexCount = childRexRoll.filter(x => x === "Rex").length;
+            if (activeRexCount === 2) parsedCoat = "Double Rex";
+            else if (activeRexCount === 1) parsedCoat = "Rex";
+
+            let sireEarAlleles = (sire.ears && sire.ears.length === 2) ? sire.ears : ["Du", "Du"];
+            let damEarAlleles = (damsList[d].ears && damsList[d].ears.length === 2) ? damsList[d].ears : ["Du", "Du"];
+            let childEarRoll = cross(sireEarAlleles, damEarAlleles);
+
+            let childObj = { 
+                id: Math.floor(Math.random()*100000), name: "Offspring #"+Math.floor(Math.random()*900+100), sex: Math.random()<0.5?"Buck ♂":"Doe ♀", age: 3, 
+                color: cross(sire.color, damsList[d].color), d_blue: cross(sire.d_blue, damsList[d].d_blue), rb_blue: cross(sire.rb_blue, damsList[d].rb_blue), choc: cross(sire.choc, damsList[d].choc), mink: cross(sire.mink, damsList[d].mink), p_dilute: cross(sire.p_dilute, damsList[d].p_dilute), r_dilute: cross(sire.r_dilute, damsList[d].r_dilute), 
+                c: cross(sire.c, damsList[d].c), coat: parsedCoat, ears: childEarRoll, burmese: cross(sire.burmese, damsList[d].burmese), be: cross(sire.be, damsList[d].be), silvermane: rolledSm, harley: cross(sire.harley, damsList[d].harley), bristle: cross(sire.bristle, damsList[d].bristle), 
+                downunder: rolledDu, marking_h: cross(sire.marking_h, damsList[d].marking_h), headspot: cross(sire.headspot, damsList[d].headspot), size_dw: cross(sire.size_dw, damsList[d].size_dw), headspot_style: Math.random() < 0.5 ? "headspot" : "blazed", color_qm: blend(sire.color_qm, damsList[d].color_qm), coat_qm: blend(sire.coat_qm, damsList[d].coat_qm), behavior_qm: blend(sire.behavior_qm, damsList[d].behavior_qm),
+                cageHome: 1
+            };
+
+            // 🧬 Paternal Age Effect Spontaneous Hidden Mutation Matrix Roll (Shiny Pokémon Rate)
+            let baseMutationThreshold = 0.00025; 
+            if (sire.age > 52) { baseMutationThreshold *= (1 + (sire.age - 52) / 4); } 
+
+            if (Math.random() < baseMutationThreshold) {
+                let mutationRoll = Math.random();
+                if (mutationRoll < 0.25) { childObj.coat = "Harley"; childObj.harley = ["hl","hl"]; }
+                else if (mutationRoll < 0.50) { childObj.ears = ["du","du"]; }
+                else if (mutationRoll < 0.75) { childObj.size_dw = ["dw","dw"]; }
+                else { childObj.c = ["c","c"]; } 
+                alert(`🔬 CIRCUIT REGISTRY MUTATION NOTICE!\nPaternal transcription factors triggered a raw mutation on ${childObj.name}! They have expressed a rare spontaneous genotype.`);
+            }
+            arr.push(childObj);
+        }
+    }
+    pregnancies.push({ stage: 1, type: typeLabel, sire: sire, dam: damA, damB: (dBId && reputation >= 1000)?colony.find(r=>r.id===dBId):null, damC: (dCId && reputation >= 4000)?colony.find(r=>r.id===dCId):null, litter: arr });
+    if(sSelectElement) sSelectElement.value = ""; if(dSelectElementA) dSelectElementA.value = ""; if(dSelectElementB) dSelectElementB.value = ""; if(dSelectElementC) dSelectElementC.value = "";
+    refreshUI();
+}
+
+window.weanLitter = function(i) {
+    let p = pregnancies[i]; p.sire.breeding = false; p.dam.breeding = false; if(p.damB) p.damB.breeding = false; if(p.damC) p.damC.breeding = false;
+    p.litter.forEach(pup => { pup.id = Math.floor(Math.random()*100000); weaningRack.push(pup); }); pregnancies.splice(i, 1); refreshUI();
+}
+<!-- PART 5 END -->
+<!-- PART 6 START -->
+window.openProfileCard = function(rat) {
+    if (!rat) return;
+    currentViewingRatId = rat.id;
+
+    let pop = document.getElementById("card-popup");
+    let details = document.getElementById("pop-details");
+    let nameInput = document.getElementById("pop-name-input");
+
+    if (!pop || !details || !nameInput) return;
+
+    let varietyString = decode(rat.color, rat.d_blue, rat.rb_blue, rat.choc, rat.mink, rat.p_dilute, rat.r_dilute, rat.c, rat.coat, rat.burmese, rat.be, rat.silvermane, rat.harley, rat.bristle, rat.downunder, rat.marking_h, rat.headspot, rat.size_dw, rat.headspot_style, rat.ears);
+
+    let html = `<strong>🆔 Specimen Handle:</strong> ${rat.name}<br>
+                <strong>🧬 Biological Sex:</strong> ${rat.sex}<br>
+                <strong>⏳ Chronological Age:</strong> ${rat.age} Weeks old<br>
+                <strong>🎨 Phenotype Variety:</strong> ${varietyString}<br>
+                <hr style="border:0; border-top:1px dashed #4a3e3a; margin:8px 0;">
+                <strong>📊 Rattery Quality Metrics:</strong><br>
+                • Color Presentation Score: <span style="color:#e5b38a;">${rat.color_qm} / 100</span><br>
+                • Coat Condition Score: <span style="color:#e5b38a;">${rat.coat_qm} / 100</span><br>
+                • Temperament & Behavior: <span style="color:#e5b38a;">${rat.behavior_qm} / 100</span><br>
+                <hr style="border:0; border-top:1px dashed #4a3e3a; margin:8px 0;">
+                <strong>🏠 Housing Mansion Slot:</strong> Assigned to Mansion Unit #${rat.cageHome || 1}<br>
+                <strong>📋 Operational Status:</strong> ${rat.breeding ? "🔬 Occupying Breeding Selector Rack" : (rat.inShowCircuit ? "🏆 Benched on competitive Circuit Field" : "🏡 Running out in Free-Roam Layout Floor")}`;
+
+    if (rat.dnaRevealed) {
+        html += `<br><span style="color:#6da374; font-size:11px; font-weight:bold;">🔬 Revealed DNA Sequence: [C:${rat.c.join("/")} | A:${rat.color.join("/")} | Du:${rat.ears ? rat.ears.join("/") : "Du/Du"}]</span>`;
+    }
+
+    details.innerHTML = html;
+    nameInput.value = rat.name;
+
+    let retireBtn = document.getElementById("pop-retire-btn");
+    retireBtn.onclick = function() {
+        if (confirm(`Are you sure you want to permanently retire or adopt out ${rat.name}?`)) {
+            let cashAmt = getDynamicAdoptionFee();
+            shillings += cashAmt;
+            colony = colony.filter(r => r.id !== rat.id);
+
+            let cageOccupants = colony.filter(r => r.cageHome === rat.cageHome).length;
+            if (cageOccupants === 0) {
+                let parentCage = cages.find(c => c.id === rat.cageHome);
+                if (parentCage) parentCage.genderRule = "Open";
+            }
+
+            closeProfileCard();
+            saveGame();
+            alert(`🏡 Adopted Out! ${rat.name} found a happy companion pet placement. (+💰 ${cashAmt} Shil)`);
+        }
+    };
+
+    pop.style.display = "block";
+}
+
+window.closeProfileCard = function() {
+    document.getElementById("card-popup").style.display = "none";
+    currentViewingRatId = null;
+}
+
+window.saveRatName = function() {
+    if (!currentViewingRatId) return;
+    let rat = colony.find(r => r.id === currentViewingRatId);
+    if (rat) { 
+        rat.name = document.getElementById("pop-name-input").value; 
+        refreshUI(); 
+        alert("Name updated!"); 
+        closeProfileCard(); 
+        saveGame(); 
+    }
+}
+
+function getRosterFootprintCount() { return colony.length; }
+
+window.graduate = function(i) { 
+    let s = weaningRack[i]; 
+    let targetCage = cages.find(c => c.genderRule === "Open" || c.genderRule === (s.sex === "Buck ♂" ? "Male Only" : "Female Only"));
+    if (!targetCage) return alert("❌ No available housing slots matching this specimen's gender lines! Purchase or clear a Mischief Mansion.");
+
+    let currentOccupantsCount = colony.filter(r => r.cageHome === targetCage.id).length;
+    if (currentOccupantsCount >= 6) return alert(`🏠 Mischief Mansion #${targetCage.id} is full! (6/6 Rats)`);
+
+    if (targetCage.genderRule === "Open") {
+        targetCage.genderRule = (s.sex === "Buck ♂" ? "Male Only" : "Female Only");
+    }
+
+    s.id = colony.length + Math.floor(Math.random() * 1000) + 1; 
+    s.cageHome = targetCage.id;
+    s.inShowCircuit = false;
+    colony.push(s); 
+    weaningRack.splice(i, 1); 
+    saveGame(); 
+}
+
+window.adopt = function(i) { 
+    shillings += getDynamicAdoptionFee(); 
+    reputation += Math.floor(weaningRack[i].behavior_qm / 4); 
+    weaningRack.splice(i, 1); 
+    saveGame(); 
+}
+
+window.buyMansion = function() { 
+    if (shillings < 200) return alert("Need Shil!"); 
+    shillings -= 200; 
+    let newId = cages.length + 1;
+    cages.push({ id: newId, name: "Mischief Mansion Unit", genderRule: "Open", slots: new Array(null,null,null,null,null), slotDurability: new Array(0,0,0,0,0) });
+    saveGame(); 
+}
+
+window.buyMaternityCage = function() { 
+    if (shillings < 150) return alert("Need Shil!"); 
+    shillings -= 150; 
+    matCapacity++; 
+    saveGame(); 
+}
+
+window.manualRefreshMarket = function() { 
+    if (manualRefreshesThisPeriod <= 0 || shillings < 50) return alert("Locked!"); 
+    shillings -= 50; 
+    manualRefreshesThisPeriod--; 
+    triggerServerMarketGeneration(); 
+    saveGame(); 
+}
+
+window.validateAndRegisterRattery = function() {
+    let bInput = document.getElementById("setup-breeder-input").value.trim();
+    if(!bInput) return alert("Fill out the breeder name input box!");
+
+    breederName = bInput; 
+    ratteryName = `${bInput}'s Mischief`; 
+    ratteryRegistered = false; 
+
+    document.getElementById("setup-popup").style.display = "none";
+    if (typeof tab === "function") {
+        tab('store', null);
+    }
+
+    let tutorialPopup = document.getElementById("rescue-tutorial-popup");
+    if (tutorialPopup) tutorialPopup.style.display = "block";
+
+    saveGame(); 
+}
+
+window.openGlobalBackpackModal = function() {
+    if (document.getElementById("card-popup")) document.getElementById("card-popup").style.display = "none";
+
+    let listEl = document.getElementById("global-backpack-items-list");
+    if (!listEl) return;
+    listEl.innerHTML = "";
+
+    let itemsMeta = new Array(
+        { key: "shunamiteMix", name: "🌾 Scatter Feed Shunamite Mix", desc: "Applies grain buffs via individual cage room rosters directly.", consumable: true },
+        { key: "dnaSwabKits", name: "🔬 Technical DNA Swab Kit", desc: "Reveals deep allele strings via individual profile card view panels.", consumable: true },
+        { key: "bugRevoltMeds", name: "🧪 BugRevolt Parasite Meds", desc: "Clears topical mite risks via individual profile view cards.", consumable: true },
+        { key: "hangingChews", name: "🪵 Hanging Wood Apple Chews", desc: "Install via empty cage sockets. Durability: 3 Wks. +10 Behavior.", tool: true },
+        { key: "fleeceHammocks", name: "🛏️ Premium Fleece Hammock", desc: "Install via empty cage sockets. Durability: 6 Wks. +12 Comfort.", tool: true },
+        { key: "spacePods", name: "🛸 Sputnik Space Pod Cradle", desc: "Install via empty cage sockets. Durability: 18 Wks. +15 Security.", tool: true },
+        { key: "silentWheels", name: "🎡 Silent Running Wheel", desc: "Install via empty cage sockets. Permanent durability. Limit 1.", tool: true },
+        { key: "cardboardCastles", name: "🏰 Playroom Cardboard Castle", desc: "Deploy to general floor footprint. Durability: 2 Wks. Global Aura.", floor: true }
+    );
+
+    itemsMeta.forEach(item => {
+        let qty = inventory[item.key] || 0;
+        let row = document.createElement("div");
+        row.className = "card"; row.style.background = "#2c2523";
+        row.innerHTML = `<strong>${item.name}</strong> <span class="badge">Qty: ${qty}</span><br><small style="opacity:0.8;">${item.desc}</small>`;
+
+        let actBtn = document.createElement("button");
+        actBtn.style.width = "100%"; actBtn.style.marginTop = "6px";
+        actBtn.innerText = item.floor ? "Deploy to Floor Layout" : "Acknowledge Inventory Supply";
+        if (qty <= 0 || !item.floor) actBtn.disabled = true;
+
+        actBtn.onclick = function() {
+            if (item.floor) {
+                inventory[item.key]--;
+                inventory.roomFloorItem = "Cardboard Castle Playground";
+                inventory.roomFloorDurability = 8;
+                alert("🏰 Deployed Cardboard Castle directly to the Free-Roam layout floor! The giant 📦 block has loaded.");
+                window.closeGlobalBackpackModal();
+                saveGame();
+            }
+        };
+        row.appendChild(actBtn); listEl.appendChild(row);
+    });
+    document.getElementById("global-backpack-popup").style.display = "block";
+}
+
+window.closeGlobalBackpackModal = function() { 
+    document.getElementById("global-backpack-popup").style.display = "none"; 
+}
+
+window.deployCastleDirectFromFloor = function() {
+    if ((inventory.cardboardCastles || 0) <= 0) return alert("❌ You do not have any Cardboard Castles in your backpack storage! Purchase one at the Store.");
+    inventory.cardboardCastles--;
+    inventory.roomFloorItem = "Cardboard Castle Playground";
+    inventory.roomFloorDurability = 8;
+    alert("📦 Placed an enlarged Cardboard Castle box on the playground floor footprint! Active aura initialized.");
+    saveGame();
+}
+<!-- PART 6 BLOCK 1 END -->
+
+window.openItemUseModalForCurrentRat = function() {
+    if (!currentViewingRatId) return;
+    let rat = colony.find(r => r.id === currentViewingRatId);
+    let listEl = document.getElementById("item-use-list");
+    if (!listEl) return;
+    listEl.innerHTML = "";
+    document.getElementById("item-use-popup-title").innerText = `🎒 Consumables for ${rat.name}`;
+
+    let itemsMeta = new Array(
+        { key: "shunamiteMix", name: "🌾 Scatter Feed Shunamite Mix", desc: "Applies grains to whole cage. +8 Coat QM to all co-housed rats.", consumable: true },
+        { key: "dnaSwabKits", name: "🔬 Technical DNA Swab Kit", desc: "Reveals hidden genotype recessive allele carriers text.", consumable: true },
+        { key: "bugRevoltMeds", name: "🧪 BugRevolt Parasite Meds", desc: "Clears raw skin mite vectors completely.", consumable: true }
+    );
+
+    itemsMeta.forEach(item => {
+        let qty = inventory[item.key] || 0;
+        let rowDiv = document.createElement("div");
+        rowDiv.className = "card"; rowDiv.style.background = "#2c2523";
+        rowDiv.innerHTML = `<strong>${item.name}</strong> <span class="badge">Qty: ${qty}</span><br><small>${item.desc}</small>`;
+
+        let useBtn = document.createElement("button");
+        useBtn.innerText = "Apply to Line"; useBtn.style.width = "100%"; useBtn.style.marginTop = "4px";
+        if (qty <= 0) useBtn.disabled = true;
+
+        useBtn.onclick = function() {
+            inventory[item.key]--;
+            if (item.key === "dnaSwabKits") {
+                rat.dnaRevealed = true;
+                alert(`🔬 DNA Profile Logged! Genotypes: Color:[${rat.color.join("/")}] C-Locus:[${rat.c.join("/")}] Ears:[${rat.ears ? rat.ears.join("/") : "Du/Du"}]`);
+            } else if (item.key === "bugRevoltMeds") {
+                alert(`🧪 Parasite shield activated on ${rat.name}.`);
+            } else if (item.key === "shunamiteMix") {
+                let siblings = colony.filter(r => r.cageHome === rat.cageHome);
+                siblings.forEach(s => { s.coat_qm = Math.min(100, s.coat_qm + 8); });
+                alert(`🌾 Scatter fed grains into Mansion #${rat.cageHome}! occupants boosted.`);
+            }
+            closeItemUseModal(); closeProfileCard(); saveGame();
+        };
+        rowDiv.appendChild(useBtn); listEl.appendChild(rowDiv);
+    });
+    document.getElementById("item-use-popup").style.display = "block";
+}
+window.closeItemUseModal = function() { document.getElementById("item-use-popup").style.display = "none"; }
+
+window.openSocketEquipmentMenuDirect = function(cageId, slotIndex) {
+    let listEl = document.getElementById("item-use-list");
+    if (!listEl) return;
+    listEl.innerHTML = "";
+    document.getElementById("item-use-popup-title").innerText = `⚙️ Equip Mansion #${cageId} Slot ${slotIndex+1}`;
+
+    let toolsMeta = new Array(
+        { key: "hangingChews", name: "🪵 Hanging Wood Apple Chews", desc: "Durability: 3 Wks. +10 Behavior.", tool: true },
+        { key: "fleeceHammocks", name: "🛏️ Premium Fleece Hammock", desc: "Durability: 6 Wks. +12 Comfort/Coat.", tool: true },
+        { key: "spacePods", name: "🛸 Sputnik Space Pod Cradle", desc: "Durability: 18 Wks. +15 Security.", tool: true },
+        { key: "silentWheels", name: "🎡 Silent Running Wheel", desc: "Indestructible. Max Health driver. Limit 1.", tool: true }
+    );
+
+    toolsMeta.forEach(item => {
+        let qty = inventory[item.key] || 0;
+        let row = document.createElement("div");
+        row.className = "card"; row.style.background = "#2c2523";
+        row.innerHTML = `<strong>${item.name}</strong> <span class="badge">Backpack Qty: ${qty}</span><br><small>${item.desc}</small>`;
+
+        let insBtn = document.createElement("button");
+        insBtn.innerText = "Install Accessory"; insBtn.style.width = "100%"; insBtn.style.marginTop = "4px";
+        if (qty <= 0) insBtn.disabled = true;
+
+        insBtn.onclick = function() {
+            let cage = cages.find(c => c.id === cageId);
+            if (item.key === "silentWheels" && cage.slots.includes("Silent Running Wheel")) {
+                return alert("❌ Limit Reached: You can only install 1 Silent Running Wheel inside a single Mischief Mansion!");
+            }
+            inventory[item.key]--;
+            let itemNameMap = { hangingChews: "Hanging Wood Chew", fleeceHammocks: "Fleece Hammock", spacePods: "Space Pod Cradle", silentWheels: "Silent Running Wheel" };
+            let durMap = { hangingChews: 3, fleeceHammocks: 6, spacePods: 18, silentWheels: 9999 };
+
+            cage.slots[slotIndex] = itemNameMap[item.key];
+            cage.slotDurability[slotIndex] = durMap[item.key];
+            closeItemUseModal();
+            saveGame();
+            openCageRosterModal(cageId);
+            alert(`⚙️ Successfully mounted ${itemNameMap[item.key]} into slot allocation!`);
+        };
+        row.appendChild(insBtn); listEl.appendChild(row);
+    });
+    document.getElementById("item-use-popup").style.display = "block";
+}
+window.openCageReassignModalForCurrentRat = function() {
+    if (!currentViewingRatId) return;
+    let rat = colony.find(r => r.id === currentViewingRatId);
+    let box = document.getElementById("cage-move-buttons-box");
+    if (!box) return; box.innerHTML = "";
+
+    cages.forEach(c => {
+        let count = colony.filter(r => r.cageHome === c.id).length;
+        let isCurrent = (rat.cageHome === c.id);
+        let validGender = (c.genderRule === "Open" || c.genderRule === (rat.sex === "Buck ♂" ? "Male Only" : "Female Only"));
+        let btn = document.createElement("button");
+        btn.innerText = `🏠 Move to Mansion #${c.id} (${count}/6 Rats) [${c.genderRule}]`;
+        if (isCurrent || count >= 6 || !validGender) btn.disabled = true;
+
+        btn.onclick = function() {
+            let oldCageId = rat.cageHome;
+            rat.cageHome = c.id;
+            if (c.genderRule === "Open") { c.genderRule = (rat.sex === "Buck ♂" ? "Male Only" : "Female Only"); }
+
+            let oldOccupants = colony.filter(r => r.cageHome === oldCageId).length;
+            if (oldOccupants === 0) {
+                let oldCage = cages.find(cg => cg.id === oldCageId);
+                if (oldCage) oldCage.genderRule = "Open";
+            }
+            document.getElementById("cage-move-popup").style.display = "none";
+            closeProfileCard(); saveGame();
+            alert(`🚚 Moved ${rat.name} safely to Mansion #${c.id}.`);
+        };
+        box.appendChild(btn);
+    });
+    document.getElementById("cage-move-popup").style.display = "block";
+}
+
+window.openCageRosterModal = function(cageId) {
+    currentViewingCageId = cageId;
+    let cage = cages.find(c => c.id === cageId);
+    let count = colony.filter(r => r.cageHome === cageId).length;
+
+    document.getElementById("cage-popup-title").innerText = `🏠 Mischief Mansion Slot #${cageId}`;
+    document.getElementById("cage-popup-status-text").innerHTML = `🧬 <strong>Gender Lock:</strong> ${cage.genderRule}<br> 👥 <strong>Population Density:</strong> ${count} / 6 Space footprints filled`;
+
+    let slotsList = document.getElementById("cage-slots-list");
+    slotsList.innerHTML = "";
+    for (let s=0; s<5; s++) {
+        let item = cage.slots[s];
+        let d = cage.slotDurability[s];
+        let slotDiv = document.createElement("div");
+        slotDiv.className = "card"; slotDiv.style.margin = "2px 0"; slotDiv.style.background = "#1f1a18";
+        if (item) {
+            let durText = item === "Silent Running Wheel" ? "✨ Permanent" : `⏳ ${d} Wks Left`;
+            slotDiv.innerHTML = `⚙️ <strong>Slot ${s+1}:</strong> ${item} (${durText}) <button class="danger" style="padding:2px 6px; font-size:11px; float:right; margin:0;" onclick="removeToyFromCageSlot(${cageId}, ${s})">Scrap</button>`;
+        } else {
+            slotDiv.innerHTML = `⚙️ <strong>Slot ${s+1}:</strong> <button style="padding:2px 8px; font-size:11px; margin:0; float:right;" onclick="window.openSocketEquipmentMenuDirect(${cageId}, ${s})">+ Install</button> <span style="opacity:0.5; font-style:italic;">Open Socket</span>`;
+        }
+        slotsList.appendChild(slotDiv);
+    }
+
+    let ratsList = document.getElementById("cage-rats-list");
+    ratsList.innerHTML = "";
+    let occupants = colony.filter(r => r.cageHome === cageId);
+    if (occupants.length === 0) {
+        ratsList.innerHTML = "<em>No rats currently co-housed inside this unit...</em>";
+    } else {
+        occupants.forEach(r => {
+            let rDiv = document.createElement("div"); rDiv.style.padding = "4px"; rDiv.style.borderBottom = "1px solid #4a3e3a"; rDiv.style.cursor = "pointer";
+            rDiv.innerHTML = `• <strong>${r.name}</strong> (${r.sex}, ${r.age} Wks) ${r.breeding ? "[BREEDING]" : ""}`;
+            rDiv.onclick = function() { closeCageRosterModal(); openProfileCard(r); };
+            ratsList.appendChild(rDiv);
+        });
+    }
+    document.getElementById("cage-roster-popup").style.display = "block";
+}
+
+window.closeCageRosterModal = function() { 
+    document.getElementById("cage-roster-popup").style.display = "none"; 
+    currentViewingCageId = null; 
+}
+
+window.removeToyFromCageSlot = function(cageId, slotIndex) {
+    let cage = cages.find(c => c.id === cageId);
+    cage.slots[slotIndex] = null; cage.slotDurability[slotIndex] = 0;
+    saveGame(); openCageRosterModal(cageId);
+}
+
+window.openBreederRegistrationCard = function() {
+    if (lifetimeBenched === 0) {
+        return alert("🔒 Breeder Card Locked! Enter a show competition benched entry tournament first to generate circuit cards.");
+    }
+    let pInfo = getDynamicPlayerTitleInfo();
+    document.getElementById("card-rattery-name").innerText = ratteryName;
+    document.getElementById("card-owner-name").innerText = breederName;
+    document.getElementById("card-title-rank").innerText = pInfo.title;
+    document.getElementById("card-level-num").innerText = pInfo.level;
+    document.getElementById("card-stat-benched").innerText = lifetimeBenched;
+    document.getElementById("card-stat-bis").innerText = lifetimeBIS;
+    document.getElementById("card-stat-rosettes").innerText = "1st: " + lifetimeFirst + " | 2nd: " + lifetimeSecond + " | 3rd: " + lifetimeThird;
+
+    for(let h=0; h<3; h++) {
+        let hook = document.getElementById("ribbon-hook-" + h);
+        hook.innerText = activeShowcaseRibbons[h] ? activeShowcaseRibbons[h] : "🎗️ Empty Hook";
+    }
+    document.getElementById("breeder-card-popup").style.display = "block";
+}
+
+window.closeBreederRegistrationCard = function() { 
+    document.getElementById("breeder-card-popup").style.display = "none"; 
+}
+
+window.clickRibbonSlot = function(index) {
+    currentSelectedHookIndex = index;
+    let listEl = document.getElementById("ribbon-picker-list"); listEl.innerHTML = "";
+    if(wonRibbonsInventory.length === 0) { listEl.innerHTML = "*No show ribbons won yet!*"; }
+    if(activeShowcaseRibbons[index]) {
+        let clearBtn = document.createElement("button"); clearBtn.innerText = "❌ Unpin Current Ribbon";
+        clearBtn.onclick = function() { activeShowcaseRibbons[currentSelectedHookIndex] = null; closeRibbonPicker(); openBreederRegistrationCard(); saveGame(); };
+        listEl.appendChild(clearBtn);
+    }
+    wonRibbonsInventory.forEach(ribbonTitle => {
+        let rBtn = document.createElement("button"); rBtn.innerText = ribbonTitle; rBtn.style.width = "100%";
+        rBtn.onclick = function() { activeShowcaseRibbons[currentSelectedHookIndex] = ribbonTitle; closeRibbonPicker(); openBreederRegistrationCard(); saveGame(); };
+        listEl.appendChild(rBtn);
+    });
+    document.getElementById("ribbon-picker-popup").style.display = "block";
+}
+
+window.closeRibbonPicker = function() { 
+    document.getElementById("ribbon-picker-popup").style.display = "none"; 
+}
+
+function saveGame() {
+    try {
+        let state = { shillings, reputation, treats, maxCapacity, matCapacity, marketWeeksLeft, manualRefreshesThisPeriod, onboardStage, colony, pregnancies, weaningRack, cages, inventory, breederName, ratteryName, ratteryRegistered, lifetimeBenched, lifetimeBIS, lifetimeFirst, lifetimeSecond, lifetimeThird, wonRibbonsInventory, activeShowcaseRibbons, lastSavedTime: Date.now() };
+        localStorage.setItem("rat_a_tap_tap_save_v5", JSON.stringify(state));
+    } catch(e) {} refreshUI();
+}
+
+function loadGame() {
+    try {
+        let d = localStorage.getItem("rat_a_tap_tap_save_v5");
+        if (d) {
+            let p = JSON.parse(d);
+            shillings = p.shillings; reputation = p.reputation; treats = p.treats || 0;
+            matCapacity = p.matCapacity; marketWeeksLeft = p.marketWeeksLeft; manualRefreshesThisPeriod = p.manualRefreshesThisPeriod;
+            onboardStage = p.onboardStage; colony = p.colony; pregnancies = p.pregnancies; weaningRack = p.weaningRack;
+            cages = p.cages || cages; inventory = p.inventory || inventory;
+            breederName = p.breederName; ratteryName = p.ratteryName; ratteryRegistered = p.ratteryRegistered;
+            lifetimeBenched = p.lifetimeBenched || 0; lifetimeBIS = p.lifetimeBIS || 0;
+            lifetimeFirst = p.lifetimeFirst || 0; lifetimeSecond = p.lifetimeSecond || 0; lifetimeThird = p.lifetimeThird || 0;
+            wonRibbonsInventory = p.wonRibbonsInventory || new Array(); activeShowcaseRibbons = p.activeShowcaseRibbons || [null,null,null];
+
+            if (p.lastSavedTime) {
+                let passedWeeks = Math.floor((Date.now() - p.lastSavedTime) / 40000);
+                if (passedWeeks > 0) {
+                    let steps = Math.min(12, passedWeeks);
+                    for (let s = 0; s < steps; s++) {
+                        colony.forEach(r => { r.age += 1; }); weaningRack.forEach(r => { r.age += 1; }); pregnancies.forEach(pr => { pr.stage += 1; });
+                        inventory.ratFoodBlocks = Math.max(0, inventory.ratFoodBlocks - (colony.length * 10));
+                        marketWeeksLeft -= 1;
+                    }
+                    for (let i = pregnancies.length - 1; i >= 0; i--) {
+                        if (pregnancies[i].stage >= 5) {
+                            let prg = pregnancies[i]; prg.sire.breeding = false; prg.dam.breeding = false; if(prg.damB) prg.damB.breeding = false; if(prg.damC) prg.damC.breeding = false;
+                            prg.litter.forEach(pup => { pup.id = Math.floor(Math.random()*100000); pup.cageHome=1; weaningRack.push(pup); }); pregnancies.splice(i, 1);
+                        }
+                    }
+                    if (marketWeeksLeft <= 0) { marketWeeksLeft = 12; manualRefreshesThisPeriod = 3; }
+                }
+            }
+        }
+    } catch(e) {}
+}
+<!-- PART 6 SECTION B BLOCK 2 END -->
+
+
+
+<!-- PART 7 START -->
+function triggerServerMarketGeneration() {
+    let sList = document.getElementById("store-list"); 
+    if (!sList) return; 
+    sList.innerHTML = "";
+
+    let tierPools = {
+        "Common": [
+            { id: "coat_rex", rec: "Rex", het: "Standard", type: "coat" },
+            { id: "coat_satin", rec: "Satin", het: "Standard", type: "coat" },
+            { id: "russian_blue", rec: "rb", het: "Rb", type: "dilute" },
+            { id: "mink", rec: "m", het: "M", type: "dilute" },
+            { id: "c_siamese", rec: "c^h", het: "C", type: "c_locus" },
+            { id: "c_albino", rec: "c", het: "C", type: "c_locus" },
+            { id: "ears_dumbo", rec: "du", het: "Du", type: "ears" }
+        ],
+        "Uncommon": [
+            { id: "coat_velveteen", rec: "Velveteen", het: "Standard", type: "coat" },
+            { id: "silvermane", rec: "Sm", het: "sm", type: "silvermane" },
+            { id: "c_himalayan", rec: "split_him", het: "C", type: "c_locus" },
+            { id: "ped", rec: "p", het: "P", type: "dilute" },
+            { id: "red", rec: "r", het: "R", type: "dilute" },
+            { id: "c_tonkinese", rec: "c^t", het: "C", type: "c_locus" },
+            { id: "size_dwarf", rec: "dw", het: "Dw", type: "size" },
+            { id: "h_irish", rec: "irish", het: "Self", type: "pattern" },
+            { id: "h_hooded", rec: "hooded", het: "Self", type: "pattern" },
+            { id: "h_berkshire", rec: "berkshire", het: "Self", type: "pattern" }
+        ],
+        "Rare": [
+            { id: "coat_hairless", rec: "Hairless", het: "Standard", type: "coat" },
+            { id: "c_marten", rec: "c^m", het: "C", type: "c_locus" },
+            { id: "burmese", rec: "Bu", het: "bu", type: "modifier" },
+            { id: "black_eyed", rec: "Be", het: "be", type: "modifier" },
+            { id: "downunder", rec: "Hdu", het: "hdu", type: "downunder" },
+            { id: "headspot", rec: "hs", het: "Hs", type: "headspot" }
+        ],
+        "Super Rare": [
+            { id: "coat_harley", rec: "Harley", het: "Standard", type: "coat" },
+            { id: "c_sable_tonk", rec: "sable_tonk", het: "C", type: "c_locus" },
+            { id: "blue", rec: "d", het: "D", type: "dilute" },
+            { id: "chocolate", rec: "b", het: "B", type: "dilute" },
+            { id: "bristlecoat", rec: "Bristle", het: "Standard", type: "bristle" }
+        ]
+    };
+
+    let forceSex = (onboardStage === 1) ? "Doe ♀" : (onboardStage === 2 ? "Buck ♂" : null);
+    executeMarketSpawnerLoop(sList, tierPools, forceSex);
+}
+<!-- PART 7 END -->
+
+<!-- PART 8 START -->
+function renderStoreDepotInterfaces() {
+    let dashboard = document.getElementById("store-inventory-dashboard");
+    if (dashboard) {
+        dashboard.innerHTML = `<div>🌾 Shunamite Mix: <strong>${inventory.shunamiteMix} lbs</strong></div>
+                               <div>🔬 DNA Swabs: <strong>${inventory.dnaSwabKits} kits</strong></div>
+                               <div>🧪 BugRevolt Meds: <strong>${inventory.bugRevoltMeds} doses</strong></div>
+                               <div>🪵 Apple Chews: <strong>${inventory.hangingChews} units</strong></div>
+                               <div>🛏️ Fleece Hammocks: <strong>${inventory.fleeceHammocks} units</strong></div>
+                               <div>🛸 Sputnik Pods: <strong>${inventory.spacePods} units</strong></div>
+                               <div>🎡 Silent Wheels: <strong>${inventory.silentWheels} units</strong></div>
+                               <div>🏰 Castles: <strong>${inventory.cardboardCastles} items</strong></div>`;
+    }
+
+    let catalogShelf = document.getElementById("shop-catalog-shelf");
+    if (catalogShelf && catalogShelf.children.length === 0) {
+        catalogShelf.innerHTML = "";
+        let merchandise = new Array(
+            { key: "ratFoodBlocks", name: "Standard Food Pellets", price: 25, pack: " (500g)" },
+            { key: "shunamiteMix", name: "Shunamite Grain Mix", price: 60, pack: " (5 lbs)" },
+            { key: "dnaSwabKits", name: "DNA Swab Test Kit", price: 150, pack: " (1 Unit)" },
+            { key: "bugRevoltMeds", name: "BugRevolt Topical", price: 40, pack: " (1 Dose)" },
+            { key: "hangingChews", name: "Hanging Apple Wood", price: 15, pack: " (1 Unit)" },
+            { key: "fleeceHammocks", name: "Fleece Hammock Tool", price: 30, pack: " (1 Unit)" },
+            { key: "spacePods", name: "Sputnik Space Pod", price: 55, pack: " (1 Unit)" },
+            { key: "silentWheels", name: "Silent Wheel (Premium)", price: 195, pack: " (1 Unit)" },
+            { key: "cardboardCastles", name: "Cardboard Castle Toy", price: 35, pack: " (1 Item)" }
+        );
+
+        merchandise.forEach(prod => {
+            let itemCard = document.createElement("div");
+            itemCard.className = "card";
+            itemCard.style.margin = "0";
+            itemCard.style.padding = "6px";
+            itemCard.style.fontSize = "11px";
+            itemCard.style.background = "#1f1a18";
+            itemCard.innerHTML = `<strong>${prod.name}</strong><br><small style='opacity:0.7;'>Size: ${prod.pack}</small><br>Price: 💰 ${prod.price} Shil<br>`;
+
+            let buyBtn = document.createElement("button");
+            buyBtn.innerText = "Buy Item";
+            buyBtn.style.padding = "4px 8px";
+            buyBtn.style.fontSize = "11px";
+            buyBtn.style.width = "100%";
+            buyBtn.style.marginTop = "4px";
+            buyBtn.onclick = function() {
+                if (shillings < prod.price) return alert("❌ Insufficient Shillings parameters!");
+                shillings -= prod.price;
+                if (prod.key === "ratFoodBlocks") inventory.ratFoodBlocks += 500;
+                else inventory[prod.key]++;
+                refreshUI();
+                saveGame();
+            };
+            itemCard.appendChild(buyBtn);
+            catalogShelf.appendChild(itemCard);
+        });
+    }
+}
+
+function executeMarketSpawnerLoop(sList, tierPools, forceSex) {
+    for (let i = 1; i <= 3; i++) {
+        let rRoll = Math.random(), totalPoints = 1, tierLabel = "Common";
+        if (rRoll < 0.15) { totalPoints = 3; tierLabel = "Rare"; } 
+        else if (rRoll < 0.45) { totalPoints = 2; tierLabel = "Uncommon"; }
+
+        let baseColorRoll = Math.random();
+        let rolledColorAlleles = ["A","A"];
+        if (baseColorRoll < 0.30) rolledColorAlleles = ["a","a"];
+        else if (baseColorRoll < 0.60) rolledColorAlleles = ["A","a"];
+
+        let config = {
+            d_blue: ["D","D"], rb_blue: ["Rb","Rb"], choc: ["B","B"], mink: ["M","M"], p_dilute: ["P","P"], r_dilute: ["R","R"],
+            c: ["C","C"], coat: "Standard", ears: ["Du","Du"], burmese: ["bu","bu"], be: ["be","be"], silvermane: ["sm","sm"], harley: ["Hl","Hl"],
+            bristle: ["br","br"], downunder: ["hdu","hdu"], marking_h: ["H","H"], headspot: ["Hs","Hs"], size_dw: ["Dw","Dw"]
+        };
+
+        let homoMax = 1, hetMax = 2;
+        let assignedHomo = 0, assignedHet = 0;
+        let chosenCoatLabel = "Standard";
+
+        let availablePool = [...tierPools[tierLabel]];
+        if (tierLabel === "Rare" || tierLabel === "Super Rare") {
+            availablePool = availablePool.concat(tierPools["Uncommon"]).concat(tierPools["Common"]);
+        } else if (tierLabel === "Uncommon") {
+            availablePool = availablePool.concat(tierPools["Common"]);
+        }
+
+        let shuffledTraits = availablePool.sort(() => 0.5 - Math.random());
+
+        for (let m = 0; m < totalPoints; m++) {
+            let trait = shuffledTraits[m];
+            if (!trait) continue;
+
+            let rollHomo = (assignedHomo < homoMax && Math.random() < 0.50);
+
+            if (rollHomo || assignedHet >= hetMax) {
+                if (trait.type === "coat") chosenCoatLabel = trait.rec;
+                else if (trait.type === "bristle") config.bristle = ["Br","Br"];
+                else if (trait.type === "silvermane") config.silvermane = ["Sm","sm"]; // Locked to safe heterozygous
+                else if (trait.type === "downunder") config.downunder = ["Hdu","hdu"]; // Locked to safe heterozygous
+                else if (trait.type === "harley") config.harley = ["hl","hl"];
+                else if (trait.type === "size") config.size_dw = ["dw","dw"];
+                else if (trait.type === "ears") config.ears = ["du","du"];
+                else if (trait.type === "headspot") config.headspot = ["hs","hs"];
+                else if (trait.type === "modifier") {
+                    if (trait.id === "burmese") config.burmese = ["Bu","Bu"];
+                    if (trait.id === "black_eyed") config.be = ["Be","Be"];
+                }
+                else if (trait.type === "dilute") {
+                    if (trait.id === "blue") config.d_blue = ["d","d"];
+                    if (trait.id === "russian_blue") config.rb_blue = ["rb","rb"];
+                    if (trait.id === "mink") config.mink = ["m","m"];
+                    if (trait.id === "chocolate") config.choc = ["b","b"];
+                    if (trait.id === "ped") config.p_dilute = ["p","p"];
+                    if (trait.id === "red") config.r_dilute = ["r","r"];
+                }
+                else if (trait.type === "c_locus") {
+                    if (trait.id === "c_siamese") config.c = ["c^h","c^h"];
+                    if (trait.id === "c_albino") config.c = ["c","c"];
+                    if (trait.id === "c_marten") config.c = ["c^m","c^m"];
+                    if (trait.id === "c_himalayan") config.c = ["cc^h","cc^h"];
+                    if (trait.id === "c_tonkinese") config.c = ["c^t","c^t"];
+                    if (trait.id === "c_sable_tonk") config.c = ["c^t","c^t"];
+                }
+                else if (trait.type === "pattern") {
+                    if (trait.id === "h_hooded") config.marking_h = ["h","h"];
+                    if (trait.id === "h_irish") config.marking_h = ["h^i","h^i"];
+                    if (trait.id === "h_berkshire") config.marking_h = ["H","h"];
+                }
+                assignedHomo++;
+            } else {
+                buildHeterozygousConfig(trait, config, chosenCoatLabel);
+                assignedHet++;
+            }
+        }
+        renderMarketCard(sList, rolledColorAlleles, config, chosenCoatLabel, totalPoints, tierLabel, forceSex);
+    }
+}
+<!-- PART 8 END -->
+
+<!-- PART 9 START -->
+function buildHeterozygousConfig(trait, config, chosenCoatLabel) {
+    if (trait.type === "coat" && trait.rec !== "Hairless") chosenCoatLabel = trait.rec;
+    else if (trait.type === "bristle") config.bristle = ["Br","br"];
+    else if (trait.type === "silvermane") config.silvermane = ["Sm","sm"];
+    else if (trait.type === "harley") config.harley = ["Hl","hl"];
+    else if (trait.type === "size") config.size_dw = ["Dw","dw"];
+    else if (trait.type === "ears") config.ears = ["Du","du"];
+    else if (trait.type === "downunder") config.downunder = ["Hdu","hdu"];
+    else if (trait.type === "headspot") config.headspot = ["Hs","hs"];
+    else if (trait.type === "modifier") {
+        if (trait.id === "burmese") config.burmese = ["Bu","bu"];
+        if (trait.id === "black_eyed") config.be = ["Be","be"];
+    }
+    else if (trait.type === "dilute") {
+        if (trait.id === "blue") config.d_blue = ["D","d"];
+        if (trait.id === "russian_blue") config.rb_blue = ["Rb","rb"];
+        if (trait.id === "mink") config.mink = ["M","m"];
+        if (trait.id === "chocolate") config.choc = ["B","b"];
+        if (trait.id === "ped") config.p_dilute = ["P","p"];
+        if (trait.id === "red") config.r_dilute = ["R","r"];
+    }
+    else if (trait.type === "c_locus") {
+        if (trait.id === "c_siamese") config.c = ["C","c^h"];
+        if (trait.id === "c_albino") config.c = ["C","c"];
+        if (trait.id === "c_marten") config.c = ["C","c^m"];
+        if (trait.id === "c_tonkinese") config.c = ["C","c^t"];
+    }
+    else if (trait.type === "pattern") {
+        if (trait.id === "h_hooded") config.marking_h = ["H","h"];
+        if (trait.id === "h_irish") config.marking_h = ["H","h^i"];
+        if (trait.id === "h_berkshire") config.marking_h = ["H","h"];
+    }
+}
+
+function renderMarketCard(sList, rolledColorAlleles, config, chosenCoatLabel, totalPoints, tierLabel, forceSex) {
+    let sRoll = forceSex ? forceSex : (Math.random() < 0.5 ? "Buck ♂" : "Doe ♀");
+    let isFree = (onboardStage < 3); 
+    let price = isFree ? 0 : (totalPoints === 3 ? 120 : (totalPoints === 2 ? 75 : 40));
+
+    let mock = { 
+        id: Math.floor(Math.random() * 100000) + 100, 
+        name: "Rescue " + (sRoll === "Buck ♂" ? "Buck" : "Doe"), sex: sRoll, age: 12, breeding: false, inShowCircuit: false,
+        color: rolledColorAlleles, d_blue: config.d_blue, rb_blue: config.rb_blue, choc: config.choc, mink: config.mink, p_dilute: config.p_dilute, r_dilute: config.r_dilute, 
+        c: config.c, coat: chosenCoatLabel, ears: config.ears, burmese: config.burmese, be: config.be, silvermane: config.silvermane, harley: config.harley,
+        bristle: config.bristle, downunder: config.downunder, marking_h: config.marking_h, headspot: config.headspot, size_dw: config.size_dw,
+        headspot_style: Math.random() < 0.5 ? "headspot" : "blazed", color_qm: 50, coat_qm: 50, behavior_qm: 60, cageHome: 1
+    };
+
+    let strCard = document.createElement("div"); 
+    strCard.className = "card";
+    // VERIFIED FIX: Attached explicit 'mock.' prefix to the bristle parameter argument chain below
+    let dV = decode(mock.color, mock.d_blue, mock.rb_blue, mock.choc, mock.mink, mock.p_dilute, mock.r_dilute, mock.c, mock.coat, mock.burmese, mock.be, mock.silvermane, mock.harley, mock.bristle, mock.downunder, mock.marking_h, mock.headspot, mock.size_dw, mock.headspot_style, mock.ears);
+
+    strCard.innerHTML = "<strong>" + mock.name + " (" + mock.sex + ")</strong> <span class='badge' style='background:#4a3e3a; color:#e5b38a;'>Points: " + totalPoints + " (" + tierLabel + ")</span><br><small style='color:var(--accent-color)'>Variety: " + dV + "</small><br>Cost: " + (isFree ? "<span style='color:var(--success-color)'>FREE FOUNDER</span>" : "💰 " + price + " Shil") + "<br>";
+
+    let btn = document.createElement("button"); 
+    btn.innerText = "Adopt Animal";
+    btn.onclick = function() {
+        if (!isFree && shillings < price) return alert("Need Shillings!"); 
+
+        let targetCage = cages.find(c => c.genderRule === "Open" || c.genderRule === (mock.sex === "Buck ♂" ? "Male Only" : "Female Only"));
+        if (!targetCage) return alert("❌ No available housing slots matching this specimen's gender lines! Purchase a new Mansion unit.");
+        let currentOccupantsCount = colony.filter(r => r.cageHome === targetCage.id).length;
+        if (currentOccupantsCount >= 6) return alert(`🏠 Mischief Mansion #${targetCage.id} is full! (6/6 Rats)`);
+
+        if (targetCage.genderRule === "Open") {
+            targetCage.genderRule = (mock.sex === "Buck ♂" ? "Male Only" : "Female Only");
+        }
+
+        if (!isFree) shillings -= price; 
+        mock.cageHome = targetCage.id;
+        colony.push(mock); 
+        strCard.remove();
+
+        if (onboardStage === 1) { 
+            onboardStage = 2; 
+            document.getElementById("onboard-banner").innerText = "📌 TUTORIAL: Female locked! Select your free founding Buck (Male) to complete setup!";
+            triggerServerMarketGeneration(); 
+        } else if (onboardStage === 2) { 
+            onboardStage = 3; 
+            let b = document.getElementById("onboard-banner"); 
+            if (b) b.remove(); 
+            triggerServerMarketGeneration(); 
+            alert("🎉 Founders chosen!");
+        } 
+        saveGame();
+    };
+    strCard.appendChild(btn); 
+    sList.appendChild(strCard);
+}
+
+window.tab = function(t, el) { 
+    document.querySelectorAll(".screen").forEach(s => s.classList.remove("active")); 
+    document.querySelectorAll(".tab").forEach(tab => tab.classList.remove("on")); 
+    let tScr = document.getElementById("scr-" + t);
+    if(tScr) tScr.classList.add("active"); 
+    if(el) el.classList.add("on"); 
+}
+
+localStorage.clear();
+loadGame(); 
+triggerServerMarketGeneration(); 
+refreshUI();
+<!-- PART 9 END -->
+
+<!-- PART 11 START -->
+function resolveBenchedShowsTimeline() {
+    activeShowCircuits.forEach(show => {
+        if (!show.benchedRat) return;
+
+        let rat = show.benchedRat;
+        lifetimeBenched += 1;
+
+        let baseScore = Math.floor((rat.color_qm + rat.coat_qm) / 2);
+        let playerFinalScore = Math.min(100, baseScore + Math.floor(Math.random() * 11 - 5));
+
+        let rankPlacement = 1;
+        show.field.forEach(opponent => {
+            if (opponent.score > playerFinalScore) rankPlacement++;
+        });
+
+        let payoutShil = show.stipend;
+        let repPayout = 20;
+        let ribbonAwarded = null;
+        let placementText = "";
+
+        if (rankPlacement === 1) {
+            lifetimeFirst += 1;
+            repPayout = 120;
+            payoutShil += 60;
+            if (Math.random() < 0.35) {
+                lifetimeBIS += 1;
+                ribbonAwarded = "👑 Best In Show (BIS) Ribbon";
+                placementText = "🏆 FIRST PLACE & BEST IN SHOW";
+            } else {
+                ribbonAwarded = "🥇 1st Place Blue Ribbon";
+                placementText = "🥇 FIRST PLACE";
+            }
+        } else if (rankPlacement === 2) {
+            lifetimeSecond += 1;
+            repPayout = 60;
+            payoutShil += 30;
+            ribbonAwarded = "🥈 2nd Place Red Ribbon";
+            placementText = "🥈 SECOND PLACE";
+        } else if (rankPlacement === 3) {
+            lifetimeThird += 1;
+            repPayout = 30;
+            payoutShil += 15;
+            ribbonAwarded = "🥉 3rd Place Yellow Ribbon";
+            placementText = "🥉 THIRD PLACE";
+        } else {
+            placementText = `🎟️ Benched Rank # ${rankPlacement}`;
+        }
+
+        shillings += payoutShil;
+        reputation += repPayout;
+
+        let logMsg = `<strong>${placementText}:</strong> ${rat.name} scored ${playerFinalScore} pts at ${show.title}. (+💰 ${payoutShil} Shil, +💖 ${repPayout} Rep)`;
+        if (ribbonAwarded) {
+            wonRibbonsInventory.push(ribbonAwarded);
+            logMsg += ` Awarded: ${ribbonAwarded}!`;
+        }
+        benchedHistoryLogs.unshift(logMsg);
+
+        rat.inShowCircuit = false;
+        show.benchedRat = null;
+        show.field = new Array();
+    });
+}
+
+// Initial engine layout rendering call on bootup once document parses completely
+renderShowDashboard();
+</script>
+</body>
+</html>
+<!-- PART 11 END -->
 
