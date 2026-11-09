@@ -1,0 +1,168 @@
+<!-- PART 1 START -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <title>Rat-a-Tap Tap Native Mobile Engine</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            background: #2c2523; 
+            color: #f5ebe6; 
+            margin: 0; 
+            padding: 0; 
+            height: 100vh; 
+            width: 100vw;
+            overflow: hidden; 
+            display: flex; 
+            flex-direction: column; 
+            position: fixed;
+            touch-action: manipulation;
+        }
+        /* Mobile Panel Scrolling Containment */
+        .screen { 
+            display: none; 
+            flex: 1; 
+            overflow-y: auto; 
+            overflow-x: hidden;
+            padding: 12px; 
+            padding-bottom: 70px; 
+            height: calc(100vh - 120px); 
+            -webkit-overflow-scrolling: touch; 
+        } 
+        .screen.active { display: flex; flex-direction: column; }
+        
+        .card { background: #3d3431; padding: 10px; margin: 6px 0; border-radius: 6px; border-left: 4px solid #c48c6a; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 8px; margin: 6px 0; }
+        
+        .cage { background: #3d3431; border: 2px solid #544743; border-radius: 6px; height: 105px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; font-size: 13px; position: relative; cursor: pointer; }
+        .cage-gender-badge { position: absolute; top: 4px; right: 6px; font-size: 10px; font-weight: bold; padding: 1px 4px; border-radius: 3px; }
+        
+        button { background: #c48c6a; color: #1f1a18; border: 2px solid #e5b38a; padding: 10px 14px; font-weight: bold; font-size: 13px; border-radius: 6px; cursor: pointer; margin: 4px 2px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        button:active { background: #e5b38a; transform: translateY(1px); }
+        button:disabled { background: #443c3a; color: #7a6e6a; border-color: #544743; cursor: not-allowed; box-shadow: none; transform: none; }
+        button.danger { background: #d16666; border-color: #ff9494; color: #1f1a18; }
+        button.secondary { background: #544743; border-color: #70625d; color: #f5ebe6; }
+        
+        select { background: #3d3431; color: #f5ebe6; border: 1px solid #c48c6a; padding: 8px; font-size: 13px; border-radius: 4px; width: 100%; margin: 4px 0; }
+        input[type="text"] { background: #2c2523; color: #f5ebe6; border: 1px solid #c48c6a; padding: 10px; border-radius: 4px; width: 100%; font-size: 14px; margin-bottom: 10px; }
+        
+        /* Fixed Sticky Mobile Navigation Footprint bar */
+        #nav { position: fixed; bottom: 0; left: 0; right: 0; background: #1f1a18; display: flex; height: 55px; border-top: 1px solid #4a3e3a; z-index: 99; padding-bottom: env(safe-area-inset-bottom); }
+        .tab { flex: 1; text-align: center; line-height: 55px; cursor: pointer; font-weight: bold; opacity: 0.6; font-size: 13px; }
+        .tab.on { opacity: 1; color: #c48c6a; font-weight: bold; }
+        .badge { background: #1f1a18; padding: 2px 6px; border-radius: 4px; font-size: 11px; color: #c48c6a; font-weight: bold; }
+        
+        /* Precise Overlay Configurations: Prevents backdrop bleed and pins depth stacking order completely */
+        .overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.85); padding: 16px; z-index: 99999 !important; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+        .popup { background: #3d3431; padding: 16px; border-radius: 8px; border: 2px solid #c48c6a; max-width: 420px; margin: 20px auto; box-shadow: 0 4px 25px rgba(0,0,0,0.6); }
+        
+        #time-track { background: #1f1a18; height: 6px; width: 100%; margin-top: 6px; border-radius: 3px; overflow: hidden; }
+        #time-fill { background: #6da374; height: 100%; width: 0%; }
+        #onboard-banner { background: #71553d; padding: 10px; border-radius: 6px; font-weight: bold; margin: 8px 0; border: 1px dashed #e5b38a; font-size: 12px; }
+        
+        .profile-header-btn { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+        .avatar-frame { background: #c48c6a; color: #1f1a18; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: bold; }
+
+        #playground-floor { background: #231d1c; border: 2px dashed #4a3e3a; border-radius: 8px; height: 170px; position: relative; margin-top: 8px; overflow: hidden; width: 100%; flex-shrink: 0; }
+        .rat-token { position: absolute; font-size: 22px; cursor: pointer; transition: all 1.8s ease-in-out; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 45px; height: 45px; z-index: 10; }
+        .rat-token-label { font-size: 9px; background: rgba(0,0,0,0.7); color: #f5ebe6; padding: 1px 4px; border-radius: 3px; white-space: nowrap; margin-top: -2px; font-weight: bold; }
+        
+        .castle-graphic { position: absolute; font-size: 60px; bottom: 10px; left: 42%; opacity: 0.9; user-select: none; z-index: 2; }
+    </style>
+</head>
+<body>
+    <div style="background:#1f1a18; padding:10px; font-weight:bold; border-bottom: 2px solid #c48c6a; z-index: 98; flex-shrink: 0;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="profile-header-btn" onclick="openBreederRegistrationCard()">
+                <div class="avatar-frame" id="header-avatar">🧑‍🌾</div>
+                <div>
+                    <div style="font-size:14px; color:#f5ebe6;"><span id="header-breeder-name">Hobbyist</span> <span class="badge" id="header-level-badge">Lvl 1</span></div>
+                    <div style="font-size:11px; color:#c48c6a; font-weight:normal;" id="header-rattery-title">Unregistered Rattery</div>
+                </div>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px;">
+                <div style="text-align: right; font-size: 13px;">
+                    <div id="shil-ui">💰 500 Shil</div>
+                    <div><span id="rep-ui">💖 0 Rep</span> | <span id="treat-ui">🥜 0 Nuts</span></div>
+                </div>
+                <button onclick="window.openGlobalBackpackModal()" style="margin:0; padding:6px 10px; font-size:16px; background:#4a3e3a; border-color:#70625d; box-shadow:none;">🎒</button>
+            </div>
+        </div>
+        <div id="time-track"><div id="time-fill"></div></div>
+    </div>
+    
+    <div style="flex: 1; position: relative; overflow: hidden;">
+        <div id="onboard-banner" style="margin: 10px 12px 2px 12px;">📌 TUTORIAL: Welcome to your Rattery! Open the Rescue App to select your first free founding Doe (Female).</div>
+        
+        <div id="scr-room" class="screen active">
+            <h3>🏡 Rat Room Wall Matrix</h3>
+            <div id="cap-ui" style="font-weight:bold; color:#c48c6a; margin-bottom:6px;">Mischief Capacity: 0 / 6 Rats</div>
+            <div class="grid" id="cage-wall"><div class="cage">🏠 Mischief Mansion Base Unit</div></div>
+            <button onclick="buyMansion()" style="width:100%; padding:12px; font-size:13px; margin-top:6px; margin-bottom:10px;">🛠️ CLICK TO BUY NEW MISCHIEF MANSION UNIT (+6 CAP) | 💰 200 Shil</button>
+            
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:2px;">
+                <h4 style="margin:4px 0;">🐀 Interactive Free-Roam Floor Playground</h4>
+                <button onclick="window.deployCastleDirectFromFloor()" id="floor-castle-quick-btn" style="padding:4px 8px; font-size:11px; margin:0;">🏰 Place Castle</button>
+            </div>
+            <div id="playground-floor"></div>
+            <div id="room-floor-enrichment-box" style="margin-top:6px;"></div>
+        </div>
+<!-- PART 1 END -->
+
+<!-- PART 2 START -->
+        <div id="scr-breed" class="screen">
+            <h3>🔬 Nursery Development Pipeline</h3>
+            <div id="mat-cap-ui" style="font-weight:bold; color:#6da374; margin-bottom:6px;">Maternity Racks: 0 / 2 Active</div>
+            <button onclick="buyMaternityCage()" style="width:100%; margin-bottom:10px; padding:12px;">🛠️ BUY MORE NURSERY CAGES | 💰 150 Shil</button>
+            <div class="card" style="background:#1f1a18; padding:12px;">
+                <strong>Setup New Pairing Slot:</strong>
+                <div style="display:grid; grid-template-columns: 1fr; gap:4px; margin-top:6px;">
+                    <div><label style="font-size:11px; font-weight:bold;">Buck (♂):</label><select id="sel-sire" onchange="filterDams()"></select></div>
+                    <div><label style="font-size:11px; font-weight:bold;">Doe A (♀):</label><select id="sel-damA" onchange="filterDams()"></select></div>
+                    <div><label style="font-size:11px; font-weight:bold;">Doe B (♀ - 1,000+ Rep):</label><select id="sel-damB" disabled onchange="filterDams()"><option value="">Locked</option></select></div>
+                    <div><label style="font-size:11px; font-weight:bold;">Doe C (♀ - 4,000+ Rep Harem):</label><select id="sel-damC" disabled onchange="filterDams()"><option value="">Locked</option></select></div>
+                </div>
+                <button onclick="lockInPairing()" style="width:100%; margin-top:10px; padding:12px;">Execute Controlled Pairing</button>
+            </div>
+            <h4>Active Maternity Pipeline Cages</h4>
+            <div id="preg-list" style="overflow-y:auto; max-height:200px;"></div>
+            <h4>Sub-Adult Weaning Evaluation Rack</h4>
+            <div id="rack-list" style="overflow-y:auto; max-height:200px;"></div>
+        </div>
+
+        <div id="scr-show" class="screen">
+            <h3>🏆 National Fancy Club Exhibition</h3>
+            <div id="show-dashboard-view" style="width:100%; flex:1; display:flex; flex-direction:column; overflow-y:auto;"></div>
+        </div>
+
+        <div id="scr-store" class="screen">
+            <h3>🎪 Supply Store & Rescue App</h3>
+            <div style="background:#1f1a18; padding:10px; border-radius:6px; margin-bottom:10px; border:1px solid #4a3e3a;">
+                <div style="display:flex; justify-content:space-between; font-weight:bold; font-size:12px; color:#e5b38a; margin-bottom:4px;">
+                    <span>🎒 Rattery Supply Inventory Depot</span>
+                    <span id="store-food-buffer-ui" style="color:#6da374;">Blocks Buffer: 0g</span>
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px; font-size:11px;" id="store-inventory-dashboard"></div>
+            </div>
+            
+            <h4 style="margin:4px 0;">🛒 Purchase Consumables & Enrichment</h4>
+            <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(135px, 1fr)); gap:6px; margin-bottom:10px; max-height:180px; overflow-y:auto; padding:2px;" id="shop-catalog-shelf"></div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; border-top:1px dashed #4a3e3a; padding-top:6px;">
+                <span id="market-timer-ui" style="font-size:11px; font-weight:bold; color:#6da374;">🔄 Auto-Restock in: 12 Wks</span>
+                <span id="market-ref-ui" style="font-size:11px; opacity:0.8;">Refreshes left: 3 / 3</span>
+            </div>
+            <button id="manual-refresh-btn" onclick="manualRefreshMarket()" style="margin-bottom:8px; width:100%; padding:10px;">🔄 Force Manual Refresh (💰 50 Shil)</button>
+            
+            <!-- FIXED: Removed the 220px constraint clamp to allow all 3 rescue cards to sit fully open without scrolling -->
+            <div id="store-list" style="overflow-y:visible; flex:1; width:100%;"></div>
+        </div>
+    </div>
+<!-- PART 2 SECTION A END -->
+
